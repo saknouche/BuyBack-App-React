@@ -1,6 +1,21 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Datas
+- ### UML
+https://drive.google.com/file/d/1wlgko7jH9VDjqIU-AnIU742kEBTUhYU2/view?usp=sharing
+
+
+>## ENVIRONNEMENT INSTALLATION
+>>### .env
+>> Créer un fichier .env à la racine (un fichier .env.example existe pour montrer comment le remplir)
+
+>> ### npm i
+>> Lancer la commande npm i pour installer et mettre à jour les node modules
+
+
+
+
+
 
 ## Available Scripts
 

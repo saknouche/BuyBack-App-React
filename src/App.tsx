@@ -3,6 +3,8 @@ import './App.css';
 import {Route, Routes} from "react-router-dom";
 import Home from "./views/Home";
 import NotFound from "./views/NotFound";
+import Login from "./views/auth/Login";
+import Register from "./views/auth/Register";
 
 const exclusionArray = [
   '/login',
@@ -17,8 +19,8 @@ function App() {
         <Routes>
           <Route path="/" >
             <Route index element={<Home />} />
-            {/*<Route path="/login" element={<Login />} />*/}
-            {/*<Route path="/register" element={<Register />} />*/}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/*" element={<NotFound />} />
           </Route>
         </Routes>
