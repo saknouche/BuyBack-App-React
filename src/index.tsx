@@ -16,7 +16,7 @@ root.render(
           <BrowserRouter>
             <App />
           </BrowserRouter>
-          <ToastContainer />
+          <ToastContainer toastStyle={{ backgroundColor: "#f0f9f3" }} />
       </StyledEngineProvider>
 
   </React.StrictMode>

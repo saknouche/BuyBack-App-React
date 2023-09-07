@@ -32,7 +32,7 @@ const Button = ({label, icon, to, link, className, type, onClick }: ButtonProps)
     <>
       <div
         className={classNames(
-          "relative select-none cursor-pointer flex flex-row justify-center items-center w-auto gap-2",
+          "relative select-none cursor-pointer flex flex-row justify-center items-center gap-2 w-full",
           "rounded-xl transition duration-300 ease-in-out",
           className
         )}

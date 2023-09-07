@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 const api = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
@@ -41,6 +42,8 @@ api.interceptors.response.use(
                 return axios(originalRequest);
             } catch (error) {
                 // Handle refresh token error or redirect to login
+                const navigate  = useNavigate();
+                navigate("/login");
             }
         }
 
