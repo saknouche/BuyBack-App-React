@@ -19,10 +19,10 @@ const Dropdown = ({label, icon, children, className }: ButtonProps) => {
 
     const toogle = () => {
         if(deploy) {
-            setOpacity("animate-leaving opacity-0")
+            setOpacity("animate-leaving opacity-0 hidden")
         }
         else {
-            setOpacity("animate-entering opacity-100")
+            setOpacity("animate-entering opacity-100 visible")
         }
         setDeploy(!deploy);
     }
