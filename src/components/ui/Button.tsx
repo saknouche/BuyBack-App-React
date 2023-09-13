@@ -2,10 +2,10 @@ import React, {ReactElement} from 'react';
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
 
-
 export type ButtonProps = {
   label: string,
-  icon?: ReactElement,
+  prefixIcon?: ReactElement,
+  suffixIcon?: ReactElement,
   to?: string,
   link?: string,
   onClick?: Function,
@@ -13,7 +13,7 @@ export type ButtonProps = {
   type?: string,
 }
 
-const Button = ({label, icon, to, link, className, type, onClick }: ButtonProps) => {
+const Button = ({label, prefixIcon, suffixIcon, to, link, className, type, onClick }: ButtonProps) => {
   const navigate  = useNavigate();
 
   function handleClick() {
@@ -42,17 +42,26 @@ const Button = ({label, icon, to, link, className, type, onClick }: ButtonProps)
             "absolute left-3 z-0"
           )}
         >
-          {icon}
+          {prefixIcon}
         </div>
         <input
           className={classNames(
-            "cursor-pointer flex-1 py-2 px-3 pl-10 z-10"
+            "cursor-pointer flex-1 py-2 px-3 z-10 ",
+            (prefixIcon)?"pl-10 mr-1":"",
+            (suffixIcon)?"pr-10 ml-1":"",
           )}
           onClick={handleClick}
           type={type?type:"button"}
           value={label}
         >
         </input>
+        <div
+            className={classNames(
+                "absolute right-3 z-0"
+            )}
+        >
+          {suffixIcon}
+        </div>
       </div>
     </>
   );

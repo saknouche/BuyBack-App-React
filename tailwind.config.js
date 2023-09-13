@@ -5,6 +5,23 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        entering: "entering 0.5s cubic-bezier(0,1.09,1,.98)",
+        leaving: "leaving 0.5s cubic-bezier(0,1.09,1,.98)",
+      },
+      keyframes: {
+        entering: {
+          '0%': { opacity: 0, },
+          // '50%': { transform: 'rotate(3deg)' },
+          '100%': { opacity: 100, }
+        },
+        leaving: {
+          '0%': { opacity: 100, },
+          // '50%': { transform: 'rotate(3deg)' },
+          '100%': { opacity: 0, }
+        },
+      },
+
       fontFamily: {
         'deco': ['bray', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },

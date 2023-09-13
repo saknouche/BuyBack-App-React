@@ -6,6 +6,8 @@ import NotFound from "./views/NotFound";
 import Login from "./views/auth/Login";
 import Register from "./views/auth/Register";
 import Header from "./views/Header";
+import ProtectedAuthRoute from "./classes/ProtectedAuthRoute";
+import TestView from "./views/TestView";
 
 const exclusionArray = [
   '/login',
@@ -20,9 +22,24 @@ function App() {
       <div className="flex flex-1 overflow-y-auto">
         <Routes>
           <Route path="/" >
+            <Route path="/test" element={<TestView />} />
             <Route index element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route
+                path="/login"
+                element={
+                  <ProtectedAuthRoute>
+                    <Login />
+                  </ProtectedAuthRoute>
+                }
+            />
+            <Route
+                path="/register"
+                element={
+                  <ProtectedAuthRoute>
+                    <Register />
+                  </ProtectedAuthRoute>
+                }
+            />
             <Route path="/*" element={<NotFound />} />
           </Route>
         </Routes>

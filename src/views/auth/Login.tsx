@@ -8,10 +8,11 @@ import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 import Auth from "./Auth";
 import { useForm } from 'react-hook-form'
 import classNames from "classnames";
-import {UserAuth} from "../../models/User";
+import {UserAuth} from "../../models/UserModel";
 import {AuthService} from "../../services/Auth";
 import {toast} from 'react-toastify';
 import {useNavigate} from "react-router-dom";
+import User from "../../classes/User";
 
 const Login = () => {
     const navigate  = useNavigate();
@@ -22,9 +23,13 @@ const Login = () => {
         authService.login(data)
         ?.then((e) => {
           console.log(e.data)
-          const { accessToken, refreshToken } = e.data;
-          localStorage.setItem('accessToken', accessToken);
-          localStorage.setItem('refreshToken', refreshToken);
+          const { accessToken, refreshToken, email, firstname, lastname } = e.data;
+          User.setUser({accessToken, refreshToken, email, firstname, lastname})
+          // localStorage.setItem('email', email);
+          // localStorage.setItem('firstname', firstname);
+          // localStorage.setItem('lastname', lastname);
+          // localStorage.setItem('accessToken', accessToken);
+          // localStorage.setItem('refreshToken', refreshToken);
           navigate("/");
         })
         .catch((error) => {
@@ -59,14 +64,13 @@ const Login = () => {
         <Button
           type="submit"
           label="Sign in"
-          icon={<LoginIcon/>}
+          prefixIcon={<LoginIcon/>}
           className="bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 font-bold mb-2"
-
         />
         <Button
           label="Create account"
           to="/register"
-          icon={<AccessibilityNewIcon  />}
+          prefixIcon={<AccessibilityNewIcon  />}
           className={classNames(
               "bg-yellow-primary-500 text-yellow-primary-50 font-bold",
               "hover:bg-yellow-primary-600"

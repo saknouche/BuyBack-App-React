@@ -1,5 +1,5 @@
 import axios from "axios";
-import {UserAuth, UserRegister} from "../models/User";
+import {UserAuth, UserRegister} from "../models/UserModel";
 
 export class AuthService {
 

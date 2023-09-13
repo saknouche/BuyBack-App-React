@@ -16,7 +16,7 @@ export type TextfieldProps = {
   className?: string,
 }
 
-const Textfield = ({form, id, label, placeholder, prefixIcon, type, className, required }: TextfieldProps) => {
+const Textfield = ({form, id, label, placeholder, prefixIcon, type, className, required}: TextfieldProps) => {
 
   const [visibility, setVisibility] = useState(false);
   const [textVisibility, setTextVisibility] = useState(type);

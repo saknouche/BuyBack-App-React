@@ -14,7 +14,7 @@ const HeaderButton = ({label, to, onClick}: HeaderButtonProps) => {
   return (
     <Link onClick={onClick} to={to} className="group h-full flex flex-col items-center justify-between">
       <div/>
-      <div className="text-xl text-white font-semibold">{label}</div>
+      <div className="text-xl text-green-primary-50 font-semibold">{label}</div>
       <div className={classNames(
         "transition duration-200 ease-in-out group-hover:opacity-100 w-full border-2 border-yellow-primary",
           ("/"+location.pathname.split("/")[1] !== to)?"opacity-0":""

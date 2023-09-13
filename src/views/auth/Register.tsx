@@ -7,9 +7,8 @@ import LoginIcon from '@mui/icons-material/Login';
 import Auth from "./Auth";
 import { useForm } from 'react-hook-form'
 import {AuthService} from "../../services/Auth";
-import {UserRegister} from "../../models/User";
+import {UserRegister} from "../../models/UserModel";
 import classNames from "classnames";
-import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 
@@ -82,7 +81,7 @@ const Register = () => {
         <Button
             label="Sign up"
             // to="/"
-            icon={<LoginIcon/>}
+            prefixIcon={<LoginIcon/>}
             className="bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 font-bold mb-2"
             type="submit"
         />

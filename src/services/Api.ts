@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
+import User from "../classes/User";
 
 const api = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
@@ -11,7 +12,7 @@ export default api
 // Add a request interceptor
 api.interceptors.request.use(
     (config) => {
-        const accessToken = localStorage.getItem('accessToken');
+        const accessToken = User.getUser().accessToken;
         if (accessToken) {
             config.headers.Authorization = `Bearer ${accessToken}`;
         }
@@ -31,11 +32,11 @@ api.interceptors.response.use(
             originalRequest._retry = true;
 
             try {
-                const refreshToken = localStorage.getItem('refreshToken');
+                const refreshToken = User.getUser().refreshToken;
                 const response = await axios.post(process.env.REACT_APP_API_URL + '/refreshtoken', { refreshToken });
                 const { accessToken } = response.data;
 
-                localStorage.setItem('accessToken', accessToken);
+                User.setAccessToken(accessToken);
 
                 // Retry the original request with the new token
                 originalRequest.headers.Authorization = `Bearer ${accessToken}`;

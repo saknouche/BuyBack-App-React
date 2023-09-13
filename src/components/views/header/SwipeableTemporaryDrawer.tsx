@@ -45,7 +45,7 @@ const SwipeableTemporaryDrawer = () => {
         <HeaderButton onClick={toggleDrawer( false)} label="Search Ticket" to="/tickets"/>
       </div>
       <div className="p-2">
-        <Button label="Sign in" to="/login" icon={<PersonIcon />} className="bg-black-primary text-white border border-transparent hover:border-yellow-primary hover:shadow-sm" />
+        <Button label="Sign in" to="/login" prefixIcon={<PersonIcon />} className="bg-black-primary text-white border border-transparent hover:border-yellow-primary hover:shadow-sm" />
       </div>
 
     </div>
