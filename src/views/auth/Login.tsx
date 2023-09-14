@@ -20,6 +20,7 @@ const Login = () => {
     const authService = new AuthService();
 
     const submit = (data: UserAuth) => {
+
         authService.login(data)
         ?.then((e) => {
           console.log(e.data)
@@ -53,6 +54,7 @@ const Login = () => {
           placeholder="Email"
           type="text"
           prefixIcon={<Email/>}
+          backgroundColor={"bg-green-primary-50"}
         />
         <Textfield
           form={form}
@@ -60,6 +62,7 @@ const Login = () => {
           placeholder="Password"
           type="password"
           prefixIcon={<LockIcon/>}
+          backgroundColor={"bg-green-primary-50"}
         />
         <Button
           type="submit"

@@ -3,6 +3,7 @@ import {User as UserModel} from "../models/UserModel";
 class User {
 
     static setUser = (user: UserModel) => {
+        User.disconnect()
         localStorage.setItem('user', JSON.stringify(user));
     }
 
@@ -26,6 +27,9 @@ class User {
         return JSON.parse(localStorage.getItem('user') || '{}');
     }
 
+    static disconnect = () => {
+        localStorage.removeItem('user');
+    }
 }
 
 export default User;

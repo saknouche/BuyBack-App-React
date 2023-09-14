@@ -1,13 +1,8 @@
 import React from 'react';
-import {useForm} from "react-hook-form";
-import {UserAuth} from "../models/UserModel";
 import classNames from "classnames";
 import SearchAutocomplete from "../components/views/home/SearchAutocomplete";
 
 const Home = () => {
-    const form = useForm<UserAuth>()
-
-    const submit = (data: UserAuth) => {}
 
     return (
         <>
@@ -23,7 +18,6 @@ const Home = () => {
                     </div>
 
                     <div
-                        onSubmit={form.handleSubmit(submit)}
                         className={classNames("flex-1 w-full bg-green-primary-400 flex flex-col justify-center items-center",
                             "px-4 sm:px-16 md:px-28 lg:px-60 xl:px-80 2xl:px-96"
                         )}

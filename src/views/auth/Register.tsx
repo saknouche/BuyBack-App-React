@@ -45,6 +45,7 @@ const Register = () => {
               placeholder="Firstname"
               type="text"
               required={true}
+              backgroundColor={"bg-green-primary-50"}
           />
           <Textfield
               form={form}
@@ -52,6 +53,7 @@ const Register = () => {
               placeholder="Lastname"
               type="text"
               required={true}
+              backgroundColor={"bg-green-primary-50"}
           />
         </div>
         <Textfield
@@ -61,6 +63,7 @@ const Register = () => {
             type="text"
             prefixIcon={<Email/>}
             required={true}
+            backgroundColor={"bg-green-primary-50"}
         />
         <Textfield
             form={form}
@@ -69,6 +72,7 @@ const Register = () => {
             type="password"
             prefixIcon={<LockIcon/>}
             required={true}
+            backgroundColor={"bg-green-primary-50"}
         />
         <Textfield
             form={form}
@@ -77,6 +81,7 @@ const Register = () => {
             type="password"
             prefixIcon={<LockIcon/>}
             required={true}
+            backgroundColor={"bg-green-primary-50"}
         />
         <Button
             label="Sign up"

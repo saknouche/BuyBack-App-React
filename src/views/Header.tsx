@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import Logo from "../assets/svg/logo_circle.svg"
 import HeaderButton from "../components/views/header/HeaderButton";
@@ -12,10 +12,13 @@ import {ConfirmationNumber, ManageAccounts} from "@mui/icons-material";
 import User from "../classes/User";
 
 const Header = () => {
+    const [firstname, setFirstname] = useState("" );
+    const [lastname, setLastname] = useState("");
 
-    const disconnect = () => {
-        localStorage.removeItem("user");
-    }
+    useEffect(() => {
+        setFirstname(User.getUser().firstname || "")
+        setLastname(User.getUser().lastname || "")
+    }, [User.getUser().firstname, User.getUser().lastname]);
 
   return (
     <div className="select-none flex flex-row h-24 bg-green-primary-500 justify-between">
@@ -40,7 +43,7 @@ const Header = () => {
         </div>
         <div className="flex-1 flex flex-row gap-4 sm:gap-8 items-center justify-end pr-5">
         {/*<HeaderSearchBar/>*/}
-            <Dropdown label={User.getUser().firstname + " " + User.getUser().lastname} className="hidden xl:inline-block">
+            <Dropdown label={firstname + " " + lastname} className="hidden xl:inline-block">
                 {
                     (!User.getUser().accessToken)?
                         <div className="w-full p-3 flex flex-col justify-center items-center gap-1" role="none">
@@ -80,7 +83,7 @@ const Header = () => {
                                 <Button
                                     label="Logout"
                                     to="/"
-                                    onClick={disconnect}
+                                    onClick={User.disconnect}
                                     className="bg-red-500 hover:bg-red-600 text-red-50 border border-transparent hover:shadow-sm"
                                 />
                             </div>

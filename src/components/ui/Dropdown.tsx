@@ -15,7 +15,7 @@ export type ButtonProps = {
 const Dropdown = ({label, icon, children, className }: ButtonProps) => {
 
     const [deploy, setDeploy] = useState(false);
-    const [opacity, setOpacity] = useState("opacity-0");
+    const [opacity, setOpacity] = useState("opacity-0 hidden");
 
     const toogle = () => {
         if(deploy) {

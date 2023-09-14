@@ -14,6 +14,13 @@ export interface UserRegister {
   confirmPassword: string;
 }
 
+export interface UserUpdate {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+}
+
 export interface UserAuth {
   email: string;
   password: string;

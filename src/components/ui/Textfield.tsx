@@ -14,9 +14,10 @@ export type TextfieldProps = {
   prefixIcon?: ReactElement,
   type?: "text" | "password"
   className?: string,
+  backgroundColor?: string,
 }
 
-const Textfield = ({form, id, label, placeholder, prefixIcon, type, className, required}: TextfieldProps) => {
+const Textfield = ({form, id, label, placeholder, prefixIcon, type, className, required, backgroundColor}: TextfieldProps) => {
 
   const [visibility, setVisibility] = useState(false);
   const [textVisibility, setTextVisibility] = useState(type);
@@ -45,14 +46,15 @@ const Textfield = ({form, id, label, placeholder, prefixIcon, type, className, r
 
             <input
               className={classNames(
-                "bg-green-primary-50 p-2 text-green-primary-900 w-full",
-                "leading-tight focus:outline-none peer placeholder-gray-dark border-2",
-                (prefixIcon && type === "password")?"rounded-l-xl border-y border-r-0 border-l-0 pl-10":"",
-                (prefixIcon && type !== "password")?"rounded-xl border-t border-b border-r-0 border-l-0 pl-10":"",
+                " p-2 text-green-primary-900 w-full",
+                "leading-tight focus:outline-none peer placeholder-gray-dark",
+                (prefixIcon && type === "password")?"rounded-l-xl border-y border-r-0 border-l pl-10":"",
+                (prefixIcon && type !== "password")?"rounded-xl border-t border-b border-r border-l pl-10":"",
                 (!prefixIcon && type === "password")?"rounded-l-xl border-l border-t border-b border-r-0":"",
                 (!prefixIcon && type !== "password")?"rounded-xl border":"",
                 form.formState.errors[id]?"border-red-600 focus:border-red-600":"border-transparent before:bg-green-primary-100 focus:bg-green-primary-200 focus:shadow-md focus:border-green-primary-900",
-                className
+                className,
+                backgroundColor
               )}
               id={id}
               placeholder={placeholder}
@@ -66,9 +68,10 @@ const Textfield = ({form, id, label, placeholder, prefixIcon, type, className, r
                   <div
                       tabIndex={-1}
                       className={classNames(
-                          "select-none absolute left-2 top-2 flex bg-green-primary-50 rounded-l-xl text-green-primary-700 justify-center items-center",
+                          "select-none absolute left-2 top-2 flex rounded-l-xl text-green-primary-700 justify-center items-center",
                           "",
                           form.formState.errors[id]?"":"peer-focus:bg-green-primary-200",
+                          backgroundColor
                       )}
                   >
                     {prefixIcon}
@@ -83,9 +86,10 @@ const Textfield = ({form, id, label, placeholder, prefixIcon, type, className, r
                     tabIndex={-1}
                   onClick={visibilityToggle}
                   className={classNames(
-                    "flex bg-green-primary-50 rounded-r-xl p-2 justify-center items-center cursor-pointer text-green-primary-700",
+                    "flex rounded-r-xl p-2 justify-center items-center cursor-pointer text-green-primary-700",
                     "border-r border-t border-b",
-                    form.formState.errors[id]?"border-red-600":"border-transparent peer-focus:bg-green-primary-200 peer-focus:border-green-primary-900"
+                    form.formState.errors[id]?"border-red-600":"border-transparent peer-focus:bg-green-primary-200 peer-focus:border-green-primary-900",
+                    backgroundColor
                   )}
                 >
                   { visibility?<VisibilityIcon/>:<VisibilityOffIcon/> }

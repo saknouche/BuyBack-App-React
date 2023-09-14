@@ -11,9 +11,9 @@ export type ProtectedRouteProps = {
  * @param children
  * @constructor
  */
-const ProtectedAuthRoute = ({ children }: ProtectedRouteProps) => {
+const ProtectedAlreadyConnectedRoute = ({ children }: ProtectedRouteProps) => {
     const user  = User.getUser();
-    if ((Object.keys(user).length === 0)) {
+    if (!(Object.keys(user).length === 0)) {
         return <Navigate to="/" />;
     }
     return (
@@ -23,4 +23,4 @@ const ProtectedAuthRoute = ({ children }: ProtectedRouteProps) => {
     );
 };
 
-export default ProtectedAuthRoute;
+export default ProtectedAlreadyConnectedRoute;
