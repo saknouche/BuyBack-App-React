@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import Textfield from "../../components/ui/Textfield";
 import Email from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
@@ -9,9 +9,17 @@ import {toast} from "react-toastify";
 import User from "../../classes/User";
 import {SaveAlt} from "@mui/icons-material";
 import {UserService} from "../../services/User";
+import {UserContext} from "../../App";
 
 const Profile = () => {
     const userService: UserService = new UserService();
+
+    const {setUser} = useContext(UserContext);
+
+    // useEffect(() => {
+    //     setUser(User.getUser)
+    // },[setUser]);
+
     const form = useForm<UserUpdate>({
         defaultValues: {
             firstname: User.getUser().firstname,
@@ -28,6 +36,7 @@ const Profile = () => {
                 console.log(e.data);
                 const { accessToken, refreshToken, email, firstname, lastname } = e.data;
                 User.setUser({accessToken, refreshToken, email, firstname, lastname})
+                setUser(User.getUser)
                 toast.success("Change made!");
             })
             .catch((error) => {
