@@ -4,6 +4,8 @@ import HeaderButton from "./HeaderButton";
 import { SwipeableDrawer } from '@mui/material';
 import Button from "../../ui/Button";
 import PersonIcon from "@mui/icons-material/Person";
+import User from "../../../classes/User";
+import {ConfirmationNumber, ManageAccounts} from "@mui/icons-material";
 
 const SwipeableTemporaryDrawer = () => {
 
@@ -30,22 +32,52 @@ const SwipeableTemporaryDrawer = () => {
       // onClick={toggleDrawer( false)}
       // onKeyDown={toggleDrawer(false)}
     >
-      <div className="flex flex-col gap-6">
-        {/*<div className="p-5">*/}
-        {/*  <div className="cursor-pointer flex flex-row items-center justify-center bg-gray-100 rounded-3xl w-full py-2 px-4">*/}
-        {/*    <input*/}
-        {/*      placeholder="Search"*/}
-        {/*      type="text"*/}
-        {/*      className="outline-none bg-gray-100 appearance-none w-full focus:w-72 focus:px-3"*/}
-        {/*    />*/}
-        {/*    <SearchIcon/>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
+      <div className="flex flex-1 flex-col gap-6">
         <HeaderButton onClick={toggleDrawer( false)} label="Home" to="/"/>
         <HeaderButton onClick={toggleDrawer( false)} label="Search Ticket" to="/tickets"/>
       </div>
       <div className="p-2">
-        <Button label="Sign in" to="/login" prefixIcon={<PersonIcon />} className="bg-black-primary text-white border border-transparent hover:border-yellow-primary hover:shadow-sm" />
+        {(!User.getUser().accessToken)?
+            <div className="w-full p-3 flex flex-col justify-center items-center gap-1" role="none">
+              <Button
+                  label="Sign in"
+                  to="/login"
+                  className="bg-green-primary-500 hover:bg-green-primary-600 text-green-primary-50 border border-transparent hover:shadow-sm"
+              />
+              <Button
+                  label="Sign up"
+                  to="/register"
+                  className="bg-yellow-primary-500 text-yellow-primary-50 hover:bg-yellow-primary-600 border border-transparent hover:shadow-sm"
+              />
+            </div>
+            :
+            <div>
+              <div className="w-full p-3 flex flex-col justify-center items-center gap-3" role="none">
+                <Button
+                    label="My profile"
+                    to="/user/profile"
+                    prefixIcon={<ManageAccounts/>}
+                    className="bg-blue-primary-500 hover:bg-blue-primary-400 text-green-primary-50 border border-transparent hover:border-yellow-primary hover:shadow-sm"
+                />
+                <Button
+                    label="My tickets"
+                    to="/user/purchased"
+                    prefixIcon={<ConfirmationNumber/>}
+                    className="bg-blue-primary-500 hover:bg-blue-primary-400 text-green-primary-50 border border-transparent hover:border-yellow-primary hover:shadow-sm"
+                />
+              </div>
+              <hr/>
+              <div className="flex flex-col justify-center items-center gap-2" role="none">
+                <div className="text-green-primary-50 block px-4 py-2 text-sm">{User.getUser().email}</div>
+                <Button
+                    label="Logout"
+                    to="/"
+                    onClick={User.disconnect}
+                    className="bg-red-500 hover:bg-red-600 text-red-50 border border-transparent hover:shadow-sm"
+                />
+              </div>
+            </div>
+        }
       </div>
 
     </div>

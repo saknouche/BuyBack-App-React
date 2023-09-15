@@ -77,7 +77,7 @@ const SearchAutocomplete = () => {
                             className={classNames(
                                 "bg-green-primary-50 p-2 text-green-primary-900 w-full",
                                 "leading-tight focus:outline-none peer placeholder-gray-dark border-2",
-                                "rounded-l-xl border-y border-r-0 border-l-0 pl-10",
+                                "rounded-l-xl border-y border-r-0 border-l pl-10",
                                 "border-transparent before:bg-green-primary-100 focus:bg-green-primary-200 focus:shadow-md focus:border-green-primary-900"
                             )}
                             placeholder={"Search ticket"}

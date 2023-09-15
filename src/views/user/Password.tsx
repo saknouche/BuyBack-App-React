@@ -1,25 +1,31 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import {UserRegister} from "../../models/UserModel";
+import {UserRegister, UserUpdate, UserUpdatePassword} from "../../models/UserModel";
 import Textfield from "../../components/ui/Textfield";
 import Email from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import Button from "../../components/ui/Button";
 import {SaveAlt} from "@mui/icons-material";
+import User from "../../classes/User";
+import {toast} from "react-toastify";
+import {UserService} from "../../services/User";
 
 const Password = () => {
-    const form = useForm<UserRegister>()
+    const userService: UserService = new UserService();
+    const form = useForm<UserUpdatePassword>()
 
-    const submit = (data: UserRegister) => {
-        // authService.register(data)
-        //     ?.then((e) => {
-        //         console.log(e.data)
-        //         navigate("/login");
-        //     })
-        //     .catch((error) => {
-        //         console.log(error.response.data)
-        //         toast.error(error.response.data.message);
-        //     })
+    const submit = (data: UserUpdatePassword) => {
+        console.log(data)
+
+        userService.updatePassword(data)
+            ?.then((e) => {
+                console.log(e.data);
+                toast.success(e.data.message);
+            })
+            .catch((error) => {
+                console.log(error)
+                toast.error(error.response.data.message);
+            })
     };
 
     return (

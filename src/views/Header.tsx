@@ -73,7 +73,7 @@ const Header = () => {
                                 />
                                 <Button
                                     label="My tickets"
-                                    to="/user/tickets"
+                                    to="/user/purchased"
                                     prefixIcon={<ConfirmationNumber/>}
                                     className="bg-blue-primary-500 hover:bg-blue-primary-400 text-green-primary-50 border border-transparent hover:border-yellow-primary hover:shadow-sm"
                                 />

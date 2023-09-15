@@ -1,20 +1,24 @@
 import React from 'react';
 import {Outlet, useLocation} from "react-router-dom";
 import Button from "../../components/ui/Button";
-import {ArrowBack, ArrowBackIosRounded, ArrowLeft, Icecream, ManageAccounts} from "@mui/icons-material";
+import {ArrowBackIosRounded, ManageAccounts} from "@mui/icons-material";
 import classNames from "classnames";
 import LockIcon from "@mui/icons-material/Lock";
-import IconButton from "../../components/ui/IconButton";
 
 const Nav = () => {
     const location = useLocation();
     const path = location.pathname.split("/")[2];
 
     const pageName = (path?.charAt(0).toUpperCase() + path.slice(1)).replace(/[-_]/, " ");
+    console.log(pageName)
     return (
         <>
             <div className="flex-1 bg-green-primary-50 flex flex-row">
-                <div className="h-full w-60 bg-green-primary-200 p-5 flex flex-col gap-3">
+                <div className={classNames(
+                    "flex h-full w-60 bg-green-primary-200 p-5 flex-col gap-3",
+                        (pageName === "")?"flex-1 md:flex-none":"hidden md:flex"
+                    )}
+                >
                     <Button
                         label="Profile"
                         className={classNames("font-bold hover:bg-green-primary-500",
@@ -33,7 +37,7 @@ const Nav = () => {
                     />
                     <div className={"flex flex-row justify-center items-center gap-2 text-black-primary"}>
                         <hr className={"flex-1 border-green-primary-400"}/>
-                        <div className={"font-bold"}>Tickets</div>
+                        <div className={"font-bold"}>My Tickets</div>
                         <hr className={"flex-1 border-green-primary-400"}/>
                     </div>
                     <Button
@@ -42,7 +46,6 @@ const Nav = () => {
                             (pageName === "Purchased")?"bg-green-primary-700 text-green-primary-50":""
                         )}
                         to={"purchased"}
-                        prefixIcon={<ManageAccounts />}
                     />
                     <Button
                         label="For sale"
@@ -50,7 +53,6 @@ const Nav = () => {
                             (pageName === "For sale")?"bg-green-primary-700 text-green-primary-50":""
                         )}
                         to={"for-sale"}
-                        prefixIcon={<ManageAccounts />}
                     />
                     <Button
                         label="Sold"
@@ -58,18 +60,30 @@ const Nav = () => {
                             (pageName === "Sold")?"bg-green-primary-700 text-green-primary-50":""
                         )}
                         to={"sold"}
-                        prefixIcon={<ManageAccounts />}
                     />
                 </div>
-                <div className={"flex-1 bg-green-primary-50 p-5 flex flex-col"}>
-                    <div className={"bg-green-primary-50 flex flex-row m-2 items-center gap-10"}>
-                        {/*<a href={"/user/"} className={"cursor-pointer hover:bg-green-primary-100 rounded-3xl p-2 flex justify-center items-center"}><ArrowBackIosRounded fontSize={"large"} /></a>*/}
+                <div className={classNames(
+                    "flex-1 bg-green-primary-50 flex flex-col ",
+                        (pageName === "")?"hidden":""
+                    )}
+                >
+                    <div className={"bg-green-primary-50 flex flex-row items-center gap-5 mb-2 pt-5 px-5 md:px-16"}>
+                        <a
+                            href={"/user/"}
+                            className={classNames(
+                                "flex md:hidden cursor-pointer hover:bg-green-primary-100 rounded-3xl p-2 justify-center items-center",
+                                // (pageName === "")?"hidden":""
+                            )}
+                        >
+                            <ArrowBackIosRounded fontSize={"large"} />
+                        </a>
                         <div className={"font-bold text-5xl text-black-primary"}>
                             {pageName}
                         </div>
                     </div>
-
-                    <Outlet/>
+                    <div className={"overflow-auto px-5 pb-5"}>
+                        <Outlet/>
+                    </div>
                 </div>
             </div>
         </>

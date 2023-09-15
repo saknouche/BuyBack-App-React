@@ -23,7 +23,7 @@ const Profile = () => {
     const submit = (data: UserUpdate) => {
         console.log(data)
 
-        userService.modify(data)
+        userService.update(data)
             ?.then((e) => {
                 console.log(e.data);
                 const { accessToken, refreshToken, email, firstname, lastname } = e.data;
@@ -41,7 +41,7 @@ const Profile = () => {
             <div className="flex-1 w-full bg-green-primary-50 flex flex-col items-center justify-center p-5">
                 <form
                     onSubmit={form.handleSubmit(submit)}
-                    className="flex-1 w-full flex-col p-5 rounded-xl flex"
+                    className="flex-1 w-full flex-col px-5 rounded-xl flex"
                 >
                     <div className={"flex justify-center items-center mb-6 gap-3"}>
                         <hr className={"border-green-primary-500 flex-1"}/>

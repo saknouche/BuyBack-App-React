@@ -21,6 +21,12 @@ export interface UserUpdate {
   password: string;
 }
 
+export interface UserUpdatePassword {
+  password: string;
+  newPassword: string;
+  confirmNewPassword: string;
+}
+
 export interface UserAuth {
   email: string;
   password: string;
