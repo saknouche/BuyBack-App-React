@@ -12,7 +12,7 @@ export type TextfieldProps = {
   label?: string,
   placeholder?: string,
   prefixIcon?: ReactElement,
-  type?: "text" | "password"
+  type?: "text" | "password" | "date"
   className?: string,
 }
 
@@ -39,7 +39,6 @@ const Textfield = ({form, id, label, placeholder, prefixIcon, type, className, r
           :
           <div/>
         }
-
 
           <div className="relative flex flex-row">
 
