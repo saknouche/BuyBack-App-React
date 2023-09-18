@@ -71,7 +71,7 @@ const ShowSportTicket = () => {
                <p>
                   Contact: <span className='font-bold'>{ticketData.email}</span>
                </p>
-               {ticketData.purchaseUserEmail === null && (
+               {ticketData.purchaseUserEmail === null ? (
                   <div className='flex gap-3'>
                      <Button
                         label='Update'
@@ -85,6 +85,10 @@ const ShowSportTicket = () => {
                         setIsOpen={setIsOpen}
                         isOpen={isOpen}
                      />
+                  </div>
+               ) : (
+                  <div className='flex justify-end'>
+                     <p className='p-3 bg-red-200 rounded-xl text-center text-lg font-semibold'>Ticket sold</p> 
                   </div>
                )}
             </div>

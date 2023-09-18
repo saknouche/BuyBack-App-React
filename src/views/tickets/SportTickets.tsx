@@ -21,16 +21,16 @@ const SportTickets = () => {
       <>
          {loading && (
             <div
-            className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-            role="status">
-            <span
-              className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-              >Loading...</span>
-            
-          </div>
+               className='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
+               role='status'
+            >
+               <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
+                  Loading...
+               </span>
+            </div>
          )}
          <div className='bg-green-primary-50 flex flex-col flex-auto gap-3 w-full p-12 md:flex-row md:justify-center align-center'>
-            {!loading || data.length > 0 ? (
+            {data.length > 0 &&
                data?.map((ticket) => (
                   <div
                      key={ticket.id.toString()}
@@ -54,12 +54,7 @@ const SportTickets = () => {
                         </div>
                      </div>
                   </div>
-               ))
-            ) : (
-               <div className='bg-red-300 h-20 flex md:w-1/2 justify-center items-center text-2xl text-red-950 rounded'>
-                  <p>You don't have any ticket</p>
-               </div>
-            )}
+               ))}
          </div>
       </>
    );

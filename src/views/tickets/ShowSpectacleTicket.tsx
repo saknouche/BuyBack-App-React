@@ -67,20 +67,26 @@ const ShowSpectacleTicket = () => {
                <p>
                   Contact: <span className='font-bold'>{ticketData.email}</span>
                </p>
-               <div className='flex gap-3'>
-                  <Button
-                     label='Update'
-                     prefixIcon={<EditIcon />}
-                     to={`/updateSpectacleTicket/${ticketData.id}`}
-                     className='bg-green-primary-400 text-xl text-white font-semibold hover:bg-green-primary-300'
-                  />
-                  <DeleteConfirmationModal
-                     id={ticketData.id}
-                     handleDelete={() => handleDelete}
-                     setIsOpen={setIsOpen}
-                     isOpen={isOpen}
-                  />
-               </div>
+               {ticketData.purchaseUserEmail === null ? (
+                  <div className='flex gap-3'>
+                     <Button
+                        label='Update'
+                        prefixIcon={<EditIcon />}
+                        to={`/updateSpectacleTicket/${ticketData.id}`}
+                        className='bg-green-primary-400 text-xl text-white font-semibold hover:bg-green-primary-300'
+                     />
+                     <DeleteConfirmationModal
+                        id={ticketData.id}
+                        handleDelete={() => handleDelete}
+                        setIsOpen={setIsOpen}
+                        isOpen={isOpen}
+                     />
+                  </div>
+               ) : (
+                  <div className='flex justify-end'>
+                     <p className='p-3 bg-red-200 rounded-xl text-center text-lg font-semibold'>Ticket sold</p> 
+                  </div>
+               )}
             </div>
          )}
       </div>

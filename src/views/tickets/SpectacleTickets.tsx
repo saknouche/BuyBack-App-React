@@ -32,36 +32,31 @@ const SpectacleTickets = () => {
             </div>
          )}
          <div className='bg-green-primary-50 flex gap-3 w-full h-full p-12 flex-wrap justify-center'>
-            {!loading || data.length > 0 ? (
-                  data?.map((ticket) => (
-                     <div
-                        key={ticket.id.toString()}
-                        className='relative bg-green-50 rounded overflow-hidden shadow-lg max-h-[200px] mx-auto w-[300px] flex flex-col justify-center md:min-w-[230px]'
-                     >
-                        <div className='px-6 py-4 flex flex-col justify-between min-h-[200px]'>
-                           <div className='font-bold mb-2'>{ticket.name}</div>
-                           <p className='text-gray-700 text-base'>
-                              {ticket.category.name}
-                           </p>
-                           <p className='text-gray-dark text-xl absolute right-2 top-2 rounded-full bg-green-primary-500 px-3 text-white font-semibold'>
-                              {ticket.price} €
-                           </p>
-                           <div className='text-left'>
-                              <Button
-                                 label='Détails'
-                                 prefixIcon={<RemoveRedEyeIcon />}
-                                 to={`/showSpectacleTicket/${ticket.id}`}
-                                 className='w-1/2 bg-green-primary-500 hover:bg-green-primary-400 text-white font-semibold'
-                              />
-                           </div>
+            {data.length > 0 &&
+               data?.map((ticket) => (
+                  <div
+                     key={ticket.id.toString()}
+                     className='relative bg-green-50 rounded overflow-hidden shadow-lg max-h-[200px] mx-auto w-[300px] flex flex-col justify-center md:min-w-[230px]'
+                  >
+                     <div className='px-6 py-4 flex flex-col justify-between min-h-[200px]'>
+                        <div className='font-bold mb-2'>{ticket.name}</div>
+                        <p className='text-gray-700 text-base'>
+                           {ticket.category.name}
+                        </p>
+                        <p className='text-gray-dark text-xl absolute right-2 top-2 rounded-full bg-green-primary-500 px-3 text-white font-semibold'>
+                           {ticket.price} €
+                        </p>
+                        <div className='text-left'>
+                           <Button
+                              label='Détails'
+                              prefixIcon={<RemoveRedEyeIcon />}
+                              to={`/showSpectacleTicket/${ticket.id}`}
+                              className='w-1/2 bg-green-primary-500 hover:bg-green-primary-400 text-white font-semibold'
+                           />
                         </div>
                      </div>
-                  ))
-               ) : (
-                  <div className='bg-red-300 md:w-1/2 h-20 flex justify-center items-center text-2xl text-red-950 rounded'>
-                     <p>You don't have any ticket</p>
                   </div>
-               )}
+               ))}
          </div>
       </>
    );
