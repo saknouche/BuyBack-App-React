@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TicketService } from '../../services/Ticket';
 import { TicketGet } from '../../models/TicketModel';
@@ -7,7 +7,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteConfirmationModal from '../../components/modals/DeleteConfirmationModal';
 import { toast } from 'react-toastify';
 
-const ShowSpectacleTicket = () => {
+const ShowSpectacleTicket:FunctionComponent = () => {
    const { id } = useParams();
    const [ticketData, setTicketData] = useState<TicketGet>();
    const ticketService = new TicketService();
@@ -67,7 +67,7 @@ const ShowSpectacleTicket = () => {
                <p>
                   Contact: <span className='font-bold'>{ticketData.email}</span>
                </p>
-               {ticketData.purchaseUserEmail === null ? (
+               {ticketData?.purchaseUserEmail === null ? (
                   <div className='flex gap-3'>
                      <Button
                         label='Update'

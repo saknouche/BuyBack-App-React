@@ -1,14 +1,14 @@
 import { ReactNode } from "react";
 
 export interface TicketGet {
-   id: number;
+   id: string;
    name: string;
    price: number;
    startDate: ReactNode;
    endDate: ReactNode;
-   category: { id: number; name: string };
-   address: { id: number; name: string; zipcode: string };
-   userId: number;
+   category: { id: string; name: string };
+   address: { id: string; name: string; zipcode: string };
+   userId: string;
    email: string;
    firstName: string;
    lastName: string
@@ -16,29 +16,29 @@ export interface TicketGet {
 }
 
 export interface SportTicketPost {
-   id: number;
+   id: string;
    name: string;
    price: number;
    startDate: ReactNode;
    endDate: ReactNode;
    addressName: string;
    addressZipcode: string;
-   sportcategoryId: number;
+   sportcategoryId: string;
    userEmail: string;
 }
 export interface SpectacleTicketPost {
-   id: number;
+   id: string;
    name: string;
    price: number;
    startDate: ReactNode;
    endDate: ReactNode;
    addressName: string;
    addressZipcode: string;
-   spectaclecategoryId: number;
+   spectaclecategoryId: string;
    userEmail: string;
 }
 
 export interface TicketCategoriesGet {
-   id: number;
+   id: string;
    name: string;
 }

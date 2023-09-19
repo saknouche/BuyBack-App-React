@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -12,7 +12,7 @@ import User from '../../classes/User';
 import Textfield from '../../components/ui/Textfield';
 import Button from '../../components/ui/Button';
 
-const AddSpectacleTicket = () => {
+const AddSpectacleTicket: FunctionComponent = () => {
    const navigate = useNavigate();
    const form = useForm<SpectacleTicketPost>({
       defaultValues: {

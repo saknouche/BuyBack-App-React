@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { TicketService } from '../../services/Ticket';
 import { TicketGet } from '../../models/TicketModel';
 import Button from '../../components/ui/Button';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
-const SpectacleTickets = () => {
+const SpectacleTickets:FunctionComponent = () => {
    const [data, setData] = useState<TicketGet[]>([]);
-   const [loading, setLoading] = useState(false);
+   const [loading, setLoading] = useState<boolean>(false);
    const ticketService = new TicketService();
    useEffect(() => {
       setLoading(true);
       ticketService
-         .getAllSpectacleTickets()
+         .getAllSpectacleTicketsByUser()
          ?.then((res) => {
             setData(res.data);
          })

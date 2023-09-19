@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -8,7 +8,7 @@ import User from '../../classes/User';
 import Textfield from '../../components/ui/Textfield';
 import Button from '../../components/ui/Button';
 
-const AddSportTicket = () => {
+const AddSportTicket:FunctionComponent = () => {
    const navigate = useNavigate();
    const form = useForm<SportTicketPost>({
       defaultValues: {

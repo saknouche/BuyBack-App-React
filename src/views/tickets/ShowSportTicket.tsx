@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { TicketService } from '../../services/Ticket';
 import { TicketGet } from '../../models/TicketModel';
@@ -7,7 +7,7 @@ import Button from '../../components/ui/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteConfirmationModal from '../../components/modals/DeleteConfirmationModal';
 
-const ShowSportTicket = () => {
+const ShowSportTicket:FunctionComponent = () => {
    const { id } = useParams();
    const [ticketData, setTicketData] = useState<TicketGet>();
    const ticketService = new TicketService();

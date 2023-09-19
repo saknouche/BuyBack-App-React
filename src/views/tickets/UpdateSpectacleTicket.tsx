@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { SpectacleTicketPost, TicketCategoriesGet } from '../../models/TicketModel';
+import {
+   SpectacleTicketPost,
+   TicketCategoriesGet,
+} from '../../models/TicketModel';
 import { TicketService } from '../../services/Ticket';
 import Textfield from '../../components/ui/Textfield';
 import Button from '../../components/ui/Button';
 
-const UpdateSpectacleTicket = () => {
+const UpdateSpectacleTicket: FunctionComponent = () => {
+   const { id }  = useParams();
    const navigate = useNavigate();
-   const { id } = useParams();
    const ticketService = new TicketService();
    const form = useForm<SpectacleTicketPost>();
 

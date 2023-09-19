@@ -3,12 +3,19 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Button from '../ui/Button';
 
+type Props = {
+   id: string,
+   handleDelete: Function,
+   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
+   isOpen: boolean
+}
+
 const DeleteConfirmationModal = ({
    id,
    handleDelete,
    setIsOpen,
    isOpen,
-}: any) => {
+}: Props) => {
    return (
       <>
          <Button

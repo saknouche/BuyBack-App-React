@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -7,9 +7,9 @@ import { TicketService } from '../../services/Ticket';
 import Textfield from '../../components/ui/Textfield';
 import Button from '../../components/ui/Button';
 
-const UpdateSportTicket = () => {
-   const navigate = useNavigate();
+const UpdateSportTicket: FunctionComponent = () => {
    const { id } = useParams();
+   const navigate = useNavigate();
    const ticketService = new TicketService();
    const form = useForm<SportTicketPost>();
 

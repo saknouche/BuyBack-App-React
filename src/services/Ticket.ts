@@ -1,6 +1,7 @@
 import { SportTicketPost, SpectacleTicketPost } from '../models/TicketModel';
 import api from './Api';
 
+
 export class TicketService {
    getAllSportTickets = () => {
       try {
@@ -10,7 +11,16 @@ export class TicketService {
       }
    };
 
-   getOneSportTicket = (id: any) => {
+   getAllSportTicketsByUser = () => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/sportsByForsaleUser');
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
+
+   getOneSportTicket = (id: string | undefined) => {
       try {
          return api.get(process.env.REACT_APP_API_URL + '/sports/' + id);
       } catch (error) {
@@ -25,7 +35,7 @@ export class TicketService {
          console.error(error);
       }
    };
-   updateSportTicket = (id: any, data: SportTicketPost) => {
+   updateSportTicket = (id: string | undefined, data: SportTicketPost) => {
       try {
          return api.put(process.env.REACT_APP_API_URL + '/sports/' + id, data);
       } catch (error) {
@@ -33,7 +43,7 @@ export class TicketService {
       }
    };
 
-   deleteSportTicket = (id: any) => {
+   deleteSportTicket = (id: string | undefined) => {
       try {
          return api.delete(process.env.REACT_APP_API_URL + '/sports/' + id);
       } catch (error) {
@@ -49,7 +59,15 @@ export class TicketService {
       }
    };
 
-   getOneSpectacleTicket = (id: any) => {
+   getAllSpectacleTicketsByUser = () => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/spectaclesByForsaleUser');
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
+   getOneSpectacleTicket = (id: string | undefined) => {
       try {
          return api.get(process.env.REACT_APP_API_URL + '/spectacles/' + id);
       } catch (error) {
@@ -64,7 +82,7 @@ export class TicketService {
       }
    };
 
-   updateSpectacleTicket = (id: any, data: SpectacleTicketPost) => {
+   updateSpectacleTicket = (id: string | undefined, data: SpectacleTicketPost) => {
       try {
          return api.put(
             process.env.REACT_APP_API_URL + '/spectacles/' + id,
@@ -74,7 +92,7 @@ export class TicketService {
          console.error(error);
       }
    };
-   deleteSpectacleTicket = (id: any) => {
+   deleteSpectacleTicket = (id: string | undefined) => {
       try {
          return api.delete(process.env.REACT_APP_API_URL + '/spectacles/' + id);
       } catch (error) {
