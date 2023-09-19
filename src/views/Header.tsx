@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Link} from "react-router-dom";
 import Logo from "../assets/svg/logo_circle.svg"
 import HeaderButton from "../components/views/header/HeaderButton";
@@ -32,15 +32,14 @@ const Header = () => {
             </div>
         </Link>
         <div className="flex-1 hidden flex-row gap-8 items-center xl:flex ml-10">
-          <Link to="/" className="flex flex-row items-center justify-center">
+            <Link to="/" className="flex flex-row items-center justify-center">
               <div className="pl-3">
                   <img className="h-20" src={Logo} alt=""/>
               </div>
-          </Link>
-        <HeaderButton label="Home" to="/"/>
-        <HeaderButton label="Search Ticket" to="/tickets"/>
-        <IconButton icon={InstagramIcon} link=""/>
-        <IconButton icon={FacebookIcon} link=""/>
+            </Link>
+            <HeaderButton label="Home" to="/"/>
+            <HeaderButton label="Search Ticket" to="/tickets"/>
+            <HeaderButton label="Sell Ticket" to="/user/sell-ticket"/>
         </div>
         <div className="flex-1 flex flex-row items-center justify-end pr-5">
 

@@ -102,14 +102,14 @@ export class TicketService {
 
    getAllSportCategories = () => {
       try {
-         return api.get(process.env.REACT_APP_API_URL + '/sportCategories');
+         return api.get(process.env.REACT_APP_API_URL + '/sport/categories');
       } catch (error) {
          console.error(error);
       }
    };
    getAllSpectacleCategories = () => {
       try {
-         return api.get(process.env.REACT_APP_API_URL + '/spectacleCategories');
+         return api.get(process.env.REACT_APP_API_URL + '/spectacle/categories');
       } catch (error) {
          console.error(error);
       }

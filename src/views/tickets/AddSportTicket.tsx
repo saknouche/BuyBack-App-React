@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -7,6 +7,16 @@ import { TicketService } from '../../services/Ticket';
 import User from '../../classes/User';
 import Textfield from '../../components/ui/Textfield';
 import Button from '../../components/ui/Button';
+import {
+   AttachMoney,
+   Business,
+   CalendarMonth,
+   Category,
+   LocationOn,
+   LocationSearching,
+   SaveAlt
+} from "@mui/icons-material";
+import Select from "../../components/ui/Select";
 
 const AddSportTicket:FunctionComponent = () => {
    const navigate = useNavigate();
@@ -36,78 +46,89 @@ const AddSportTicket:FunctionComponent = () => {
          .postSportTicket(data)
          ?.then((res) => {
             toast.success(res.data.message);
-            navigate('/sportTickets');
+            navigate('/user/purchased');
          })
          .catch((error) => {
             toast.error(error.response.data.message);
          });
    };
    return (
-      <div className='p-12 flex w-full justify-center items-center h-full'>
+      <div className='flex-1 w-full bg-green-primary-50 flex flex-col p-5 gap-3 justify-center'>
+         <h2 className='font-bold mt-3 mb-2 text-center text-4xl text-black-primary pb-5'>
+            My Sport Ticket
+         </h2>
          <form
             onSubmit={form.handleSubmit(submit)}
-            className='w-[500px] sm:min-w-[300px]'
+            className=''
          >
-            <h2 className='font-bold mt-3 mb-2 text-center'>
-               ADD A SPORT EVENT
-            </h2>
             <Textfield
-               label='Name'
                form={form}
                id='name'
-               placeholder='Enter event name'
+               placeholder='Event name'
+               backgroundColor={"bg-green-primary-300"}
+               className={"font-semibold"}
             />
             <Textfield
-               label='Price'
                form={form}
                id='price'
-               placeholder='Enter price'
+               placeholder='Price'
+               prefixIcon={<AttachMoney/>}
+               backgroundColor={"bg-green-primary-300"}
+               className={"font-semibold"}
             />
+
             <Textfield
-               label='Start date'
-               form={form}
-               id='startDate'
-               type='date'
-               placeholder='Enter date'
-            />
-            <Textfield label='End date' form={form} id='endDate' type='date' />
-            <Textfield
-               label='Address'
                form={form}
                id='addressName'
-               placeholder='Enter address'
+               prefixIcon={<LocationSearching/>}
+               placeholder='Address'
+               backgroundColor={"bg-green-primary-300"}
+               className={"font-semibold"}
             />
             <Textfield
-               label='Zipcode'
                form={form}
                id='addressZipcode'
-               placeholder='Enter zipcode'
+               prefixIcon={<LocationOn/>}
+               placeholder='Zipcode'
+               backgroundColor={"bg-green-primary-300"}
+               className={"font-semibold"}
             />
-            {categories.length > 0 && (
-               <>
-                  <label className='font-semibold pl-2' htmlFor='categoryId'>
-                     Category
-                  </label>
-                  <select
-                     className='p-2 bg-green-primary-50 w-full rounded-lg mb-6'
-                     id='categoryId'
-                     {...form.register('sportcategoryId', {
-                        required: true,
-                        maxLength: 300,
-                     })}
-                  >
-                     {categories?.map((category) => (
-                        <option key={category.id} value={category.id}>
-                           {category.name}
-                        </option>
-                     ))}
-                  </select>
-               </>
-            )}
+            <Textfield
+                label='Start date'
+                form={form}
+                prefixIcon={<CalendarMonth/>}
+                id='startDate'
+                type='date'
+                backgroundColor={"bg-green-primary-300"}
+                className={"font-semibold"}
+            />
+            <Textfield
+                label='End date'
+                form={form}
+                prefixIcon={<CalendarMonth/>}
+                id='endDate'
+                type='date'
+                backgroundColor={"bg-green-primary-300"}
+                className={"font-semibold"}
+            />
+            <Select
+                form={form}
+                label={"Category"}
+                id={"sportCategoryId"}
+                backgroundColor={"bg-green-primary-300"}
+                className={"font-semibold"}
+            >
+               {categories?.map((category) => (
+                  <option key={category.id} value={category.id} className={"font-semibold"}>
+                     {category.name}
+                  </option>
+               ))}
+            </Select>
             <Button
                type='submit'
                label='Save'
-               className='bg-green-primary-400 text-white font-semibold hover:bg-green-primary-300'
+               prefixIcon={<SaveAlt/>}
+               className='bg-blue-400 hover:bg-blue-500 text-green-primary-50 font-semibold'
             />
          </form>
       </div>

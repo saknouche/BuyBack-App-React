@@ -1,12 +1,10 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import {UserRegister, UserUpdate, UserUpdatePassword} from "../../models/UserModel";
+import {UserUpdatePassword} from "../../models/UserModel";
 import Textfield from "../../components/ui/Textfield";
-import Email from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import Button from "../../components/ui/Button";
 import {SaveAlt} from "@mui/icons-material";
-import User from "../../classes/User";
 import {toast} from "react-toastify";
 import {UserService} from "../../services/User";
 

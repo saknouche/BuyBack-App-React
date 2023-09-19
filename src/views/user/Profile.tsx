@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import Textfield from "../../components/ui/Textfield";
 import Email from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
@@ -62,7 +62,7 @@ const Profile = () => {
                         id="firstname"
                         placeholder="Firstname"
                         backgroundColor={"bg-green-primary-300"}
-                        className={"font-bold"}
+                        className={"font-semibold"}
                         type="text"
                         required={true}
                     />
@@ -71,7 +71,7 @@ const Profile = () => {
                         id="lastname"
                         placeholder="Lastname"
                         backgroundColor={"bg-green-primary-300"}
-                        className={"font-bold"}
+                        className={"font-semibold"}
                         type="text"
                         required={true}
                     />
@@ -80,7 +80,7 @@ const Profile = () => {
                         id="email"
                         placeholder="Email"
                         backgroundColor={"bg-green-primary-300"}
-                        className={"font-bold"}
+                        className={"font-semibold"}
                         type="text"
                         prefixIcon={<Email/>}
                         required={true}
@@ -91,7 +91,7 @@ const Profile = () => {
                         id="password"
                         placeholder="Password"
                         backgroundColor={"bg-green-primary-300"}
-                        className={"font-bold"}
+                        className={"font-semibold"}
                         type="password"
                         prefixIcon={<LockIcon/>}
                         required={true}

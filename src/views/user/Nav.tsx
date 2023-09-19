@@ -1,7 +1,7 @@
 import React from 'react';
-import {Outlet, useLocation} from "react-router-dom";
+import {Link, Outlet, useLocation} from "react-router-dom";
 import Button from "../../components/ui/Button";
-import {ArrowBackIosRounded, ManageAccounts} from "@mui/icons-material";
+import {Add, ArrowBackIosRounded, ManageAccounts} from "@mui/icons-material";
 import classNames from "classnames";
 import LockIcon from "@mui/icons-material/Lock";
 
@@ -41,6 +41,14 @@ const Nav = () => {
                         <hr className={"flex-1 border-green-primary-400"}/>
                     </div>
                     <Button
+                        label="Sell ticket"
+                        className={classNames("bg-blue-400 hover:bg-blue-500 font-bold  text-black-primary",
+                            (pageName === "Sell ticket")?"bg-blue-700 text-green-primary-50":""
+                        )}
+                        prefixIcon={<Add/>}
+                        to={"sell-ticket"}
+                    />
+                    <Button
                         label="Purchased"
                         className={classNames("bg-green-primary-400 font-bold hover:bg-green-primary-500 text-black-primary",
                             (pageName === "Purchased")?"bg-green-primary-700 text-green-primary-50":""
@@ -68,15 +76,15 @@ const Nav = () => {
                     )}
                 >
                     <div className={"bg-green-primary-50 flex flex-row items-center gap-5 mb-2 pt-5 px-5 md:px-16"}>
-                        <a
-                            href={"/user/"}
+                        <Link
+                            to={"/user/"}
                             className={classNames(
                                 "flex md:hidden cursor-pointer hover:bg-green-primary-100 rounded-3xl p-2 justify-center items-center",
                                 // (pageName === "")?"hidden":""
                             )}
                         >
                             <ArrowBackIosRounded fontSize={"large"} />
-                        </a>
+                        </Link>
                         <div className={"font-bold text-5xl text-black-primary"}>
                             {pageName}
                         </div>

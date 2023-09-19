@@ -32,8 +32,8 @@ const Textfield = ({form, id, label, placeholder, prefixIcon, type, className, r
       <div className="flex flex-col mb-6 w-full">
         {
           label?
-          <div className="">
-            <label className="ml-2 text-green-primary-900 font-semibold mb-1">
+          <div className="mb-0.5">
+            <label className="ml-2 text-green-primary-900 font-semibold">
               {label}
             </label>
           </div>

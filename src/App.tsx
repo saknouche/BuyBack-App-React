@@ -1,4 +1,4 @@
-import React, {createContext, ReactElement, useContext, useState} from 'react';
+import React, {createContext, useState} from 'react';
 import './App.css';
 import {Route, Routes, useLocation} from "react-router-dom";
 import Home from "./views/Home";
@@ -18,6 +18,9 @@ import User from "./classes/User";
 import Purchased from "./views/user/Purchased";
 import ForSale from "./views/user/ForSale";
 import Sold from "./views/user/Sold";
+import AddSportTicket from "./views/tickets/AddSportTicket";
+import AddSpectacleTicket from "./views/tickets/AddSpectacleTicket";
+import SellTicket from "./views/user/SellTicket";
 
 const exclusionArray = [
   '/login',
@@ -81,6 +84,18 @@ function App() {
                         <Route path="purchased" element={<Purchased />}/>
                         <Route path="for-sale" element={<ForSale />}/>
                         <Route path="sold" element={<Sold />}/>
+                        <Route
+                            path="sell-ticket"
+                        >
+                            <Route index element={<SellTicket/>}/>
+                            <Route path="sport">
+                                <Route path="new" element={<AddSportTicket />}/>
+                            </Route>
+                            <Route path="spectacle">
+                                <Route path="new" element={<AddSpectacleTicket />}/>
+                            </Route>
+                            <Route path="*" element={<NotFound />} />
+                        </Route>
                         <Route path="*" element={<NotFound />} />
                     </Route>
                     <Route path="*" element={<NotFound />} />
