@@ -73,13 +73,13 @@ const Header = () => {
                                     label="My profile"
                                     to="/user/profile"
                                     prefixIcon={<ManageAccounts/>}
-                                    className="bg-blue-primary-500 hover:bg-blue-primary-400 text-green-primary-50 border border-transparent hover:border-yellow-primary hover:shadow-sm"
+                                    className="bg-blue-500 hover:bg-blue-600 text-green-primary-50 border border-transparent hover:border-yellow-primary hover:shadow-sm"
                                 />
                                 <Button
                                     label="My tickets"
                                     to="/user/purchased"
                                     prefixIcon={<ConfirmationNumber/>}
-                                    className="bg-blue-primary-500 hover:bg-blue-primary-400 text-green-primary-50 border border-transparent hover:border-yellow-primary hover:shadow-sm"
+                                    className="bg-blue-500 hover:bg-blue-600 text-green-primary-50 border border-transparent hover:border-yellow-primary hover:shadow-sm"
                                 />
                             </div>
                             <hr/>

@@ -69,7 +69,7 @@ const Password = () => {
                         label="Save"
                         // to="/"
                         prefixIcon={<SaveAlt/>}
-                        className="bg-green-primary-600 hover:bg-green-primary-600 min-w text-green-primary-50 font-bold mb-2"
+                        className="bg-blue-400 hover:bg-blue-500 min-w text-green-primary-50 font-bold mb-2"
                         type="submit"
                     />
                 </form>

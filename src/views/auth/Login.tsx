@@ -6,7 +6,7 @@ import Button from "../../components/ui/Button";
 import LoginIcon from '@mui/icons-material/Login';
 import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 import Auth from "./Auth";
-import { useForm } from 'react-hook-form'
+import {useForm} from 'react-hook-form'
 import classNames from "classnames";
 import {UserAuth} from "../../models/UserModel";
 import {AuthService} from "../../services/Auth";
