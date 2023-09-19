@@ -15,6 +15,9 @@ import Nav from "./views/user/Nav";
 import Password from "./views/user/Password";
 import {User as UserModel} from "./models/UserModel";
 import User from "./classes/User";
+import Purchased from "./views/user/Purchased";
+import ForSale from "./views/user/ForSale";
+import Sold from "./views/user/Sold";
 
 const exclusionArray = [
   '/login',
@@ -75,6 +78,9 @@ function App() {
                         <Route path="profile" element={<Profile />}/>
                         <Route path="change-password" element={<Password />}/>
                         <Route path="tickets" element={<Tickets />}/>
+                        <Route path="purchased" element={<Purchased />}/>
+                        <Route path="for-sale" element={<ForSale />}/>
+                        <Route path="sold" element={<Sold />}/>
                         <Route path="*" element={<NotFound />} />
                     </Route>
                     <Route path="*" element={<NotFound />} />
