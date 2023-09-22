@@ -53,12 +53,12 @@ const Header = () => {
                             <Button
                                 label="Sign in"
                                 to="/login"
-                                className="bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 border border-transparent hover:shadow-sm"
+                                className="w-full bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 border border-transparent hover:shadow-sm"
                             />
                             <Button
                                 label="Sign up"
                                 to="/register"
-                                className="bg-yellow-primary-500 text-yellow-primary-50 hover:bg-yellow-primary-600 border border-transparent hover:shadow-sm"
+                                className="w-full bg-yellow-primary-500 text-yellow-primary-50 hover:bg-yellow-primary-600 border border-transparent hover:shadow-sm"
                             />
                         </div>
                         :
@@ -72,13 +72,13 @@ const Header = () => {
                                     label="My profile"
                                     to="/user/profile"
                                     prefixIcon={<ManageAccounts/>}
-                                    className="bg-blue-500 hover:bg-blue-600 text-green-primary-50 border border-transparent hover:border-yellow-primary hover:shadow-sm"
+                                    className="w-full bg-blue-500 hover:bg-blue-600 text-green-primary-50 border border-transparent hover:border-yellow-primary hover:shadow-sm"
                                 />
                                 <Button
                                     label="My tickets"
                                     to="/user/purchased"
                                     prefixIcon={<ConfirmationNumber/>}
-                                    className="bg-blue-500 hover:bg-blue-600 text-green-primary-50 border border-transparent hover:border-yellow-primary hover:shadow-sm"
+                                    className="w-full bg-blue-500 hover:bg-blue-600 text-green-primary-50 border border-transparent hover:border-yellow-primary hover:shadow-sm"
                                 />
                             </div>
                             <hr/>
@@ -87,7 +87,7 @@ const Header = () => {
                                     label="Logout"
                                     to="/"
                                     onClick={disconnect}
-                                    className="bg-red-500 hover:bg-red-600 text-red-50 border border-transparent hover:shadow-sm"
+                                    className="w-full bg-red-500 hover:bg-red-600 text-red-50 border border-transparent hover:shadow-sm"
                                 />
                             </div>
                         </div>

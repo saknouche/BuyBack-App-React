@@ -6,13 +6,13 @@ import TicketSpectacleCard from "../../../components/ui/TicketSpectacleCard";
 import moment from "moment";
 import classNames from "classnames";
 
-const SpectaclePurchasedTicketList = () => {
+const SpectacleForSaleTicketList = () => {
 
     const [spectacleTickets, setSpectacleTickets] = useState<SpectacleTicketResponse[]>([]);
 
-    const getPurchasedSpectacleTickets = useCallback(() => {
+    const getForSaleSpectacleTickets = useCallback(() => {
         const ticketService = new TicketService()
-        ticketService.getPurchasedSpectacleTicketsByUser()
+        ticketService.getForSaleSpectacleTicketsByUser()
             ?.then((res) => {
                 console.log(res.data)
                 setSpectacleTickets(res.data);
@@ -24,8 +24,8 @@ const SpectaclePurchasedTicketList = () => {
     }, [])
 
     useEffect(() => {
-        getPurchasedSpectacleTickets()
-    }, [getPurchasedSpectacleTickets]);
+        getForSaleSpectacleTickets()
+    }, [getForSaleSpectacleTickets]);
 
     return (
         <>
@@ -50,16 +50,17 @@ const SpectaclePurchasedTicketList = () => {
                                 date={moment(spectacleTicket.startDate, "YYYY-MM-DD")}
                                 city={spectacleTicket.address.name}
                                 seller={spectacleTicket.seller.firstname + " " + spectacleTicket.seller.lastname}
+                                edit
+                                del
                             />
                         )
                     })
                     :
                         <div className={"rounded-3xl p-5 flex justify-center items-center w-full text-green-primary-500 text-5xl font-semibold bg-green-primary-100"}>No ticket</div>
-
                 }
             </div>
         </>
     );
 }
 
-export default SpectaclePurchasedTicketList;
+export default SpectacleForSaleTicketList;

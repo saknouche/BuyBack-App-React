@@ -25,7 +25,7 @@ const DetailsSportTicket:FunctionComponent = () => {
    const navigate = useNavigate();
    const handleDelete = () => {
       ticketService
-         .deleteSportTicket(id)
+         .deleteSportTicket(Number(id))
          ?.then((res) => {
             toast.success(res.data.message);
             navigate('/sportTickets');

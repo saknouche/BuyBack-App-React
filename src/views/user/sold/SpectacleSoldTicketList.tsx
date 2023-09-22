@@ -6,13 +6,13 @@ import TicketSpectacleCard from "../../../components/ui/TicketSpectacleCard";
 import moment from "moment";
 import classNames from "classnames";
 
-const SpectaclePurchasedTicketList = () => {
+const SpectacleSoldTicketList = () => {
 
     const [spectacleTickets, setSpectacleTickets] = useState<SpectacleTicketResponse[]>([]);
 
-    const getPurchasedSpectacleTickets = useCallback(() => {
+    const getSoldSpectacleTickets = useCallback(() => {
         const ticketService = new TicketService()
-        ticketService.getPurchasedSpectacleTicketsByUser()
+        ticketService.getSoldSpectacleTicketsByUser()
             ?.then((res) => {
                 console.log(res.data)
                 setSpectacleTickets(res.data);
@@ -24,8 +24,8 @@ const SpectaclePurchasedTicketList = () => {
     }, [])
 
     useEffect(() => {
-        getPurchasedSpectacleTickets()
-    }, [getPurchasedSpectacleTickets]);
+        getSoldSpectacleTickets()
+    }, [getSoldSpectacleTickets]);
 
     return (
         <>
@@ -37,7 +37,7 @@ const SpectaclePurchasedTicketList = () => {
                     )}
             >
                 {
-                    spectacleTickets.length ?
+                    spectacleTickets.length?
                     spectacleTickets.map((spectacleTicket, index)=> {
                         return (
                             <TicketSpectacleCard
@@ -55,11 +55,10 @@ const SpectaclePurchasedTicketList = () => {
                     })
                     :
                         <div className={"rounded-3xl p-5 flex justify-center items-center w-full text-green-primary-500 text-5xl font-semibold bg-green-primary-100"}>No ticket</div>
-
                 }
             </div>
         </>
     );
 }
 
-export default SpectaclePurchasedTicketList;
+export default SpectacleSoldTicketList;

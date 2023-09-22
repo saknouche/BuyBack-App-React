@@ -11,7 +11,7 @@ const SportTickets:FunctionComponent = () => {
    useEffect(() => {
       setLoading(true);
       ticketService
-         .getAllSportTicketsByUser()
+         .getPurchasedSportTicketsByUser()
          ?.then((res) => setData(res.data))
          .catch((error) => console.log(error));
       setLoading(false);

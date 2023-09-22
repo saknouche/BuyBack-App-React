@@ -9,12 +9,6 @@ module.exports = withMT({
     "./node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    tabs: {
-      defaultProps: {
-        className: "",
-        orientation: "horizontal",
-      },
-    },
     extend: {
       animation: {
         entering: "entering 0.5s cubic-bezier(0,1.09,1,.98)",

@@ -11,7 +11,7 @@ export class TicketService {
       }
    };
 
-   getAllSportTicketsByUser = () => {
+   getPurchasedSportTicketsByUser = () => {
       try {
          return api.get(process.env.REACT_APP_API_URL + '/user/tickets/sport/purchased');
       } catch (error) {
@@ -19,9 +19,41 @@ export class TicketService {
       }
    };
 
-   getAllSpectacleTicketsByUser = () => {
+   getPurchasedSpectacleTicketsByUser = () => {
       try {
          return api.get(process.env.REACT_APP_API_URL + '/user/tickets/spectacle/purchased');
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
+   getForSaleSportTicketsByUser = () => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/user/tickets/sport/for-sale');
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
+   getForSaleSpectacleTicketsByUser = () => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/user/tickets/spectacle/for-sale');
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
+   getSoldSportTicketsByUser = () => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/user/tickets/sport/sold');
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
+   getSoldSpectacleTicketsByUser = () => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/user/tickets/spectacle/sold');
       } catch (error) {
          console.error(error);
       }
@@ -51,7 +83,7 @@ export class TicketService {
       }
    };
 
-   deleteSportTicket = (id: string | undefined) => {
+   deleteSportTicket = (id: number) => {
       try {
          return api.delete(process.env.REACT_APP_API_URL + '/sports/' + id);
       } catch (error) {
@@ -92,7 +124,7 @@ export class TicketService {
          console.error(error);
       }
    };
-   deleteSpectacleTicket = (id: string | undefined) => {
+   deleteSpectacleTicket = (id: number) => {
       try {
          return api.delete(process.env.REACT_APP_API_URL + '/spectacles/' + id);
       } catch (error) {

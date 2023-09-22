@@ -49,18 +49,18 @@ const Nav = () => {
                         to={"sell-ticket"}
                     />
                     <Button
-                        label="Purchased"
-                        className={classNames("bg-green-primary-400 font-bold hover:bg-green-primary-500 text-black-primary",
-                            (pageName === "Purchased")?"bg-green-primary-700 text-green-primary-50":""
-                        )}
-                        to={"purchased"}
-                    />
-                    <Button
                         label="For sale"
                         className={classNames("bg-green-primary-400 font-bold hover:bg-green-primary-500 text-black-primary",
                             (pageName === "For sale")?"bg-green-primary-700 text-green-primary-50":""
                         )}
                         to={"for-sale"}
+                    />
+                    <Button
+                        label="Purchased"
+                        className={classNames("bg-green-primary-400 font-bold hover:bg-green-primary-500 text-black-primary",
+                            (pageName === "Purchased")?"bg-green-primary-700 text-green-primary-50":""
+                        )}
+                        to={"purchased"}
                     />
                     <Button
                         label="Sold"

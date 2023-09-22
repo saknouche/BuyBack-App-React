@@ -6,13 +6,13 @@ import moment from "moment";
 import TicketSportCard from "../../../components/ui/TicketSportCard";
 import classNames from "classnames";
 
-const SportPurchasedTicketList = () => {
+const SportSoldTicketList = () => {
 
     const [sportTickets, setSportTickets] = useState<SportTicketResponse[]>([]);
 
-    const getSportTickets = useCallback(() => {
+    const getSoldSportTickets = useCallback(() => {
         const ticketService = new TicketService()
-        ticketService.getPurchasedSportTicketsByUser()
+        ticketService.getSoldSportTicketsByUser()
             ?.then((res) => {
                 console.log(res.data)
                 setSportTickets(res.data);
@@ -24,8 +24,8 @@ const SportPurchasedTicketList = () => {
     }, [])
 
     useEffect(() => {
-        getSportTickets()
-    }, [getSportTickets]);
+        getSoldSportTickets()
+    }, [getSoldSportTickets]);
 
     return (
         <>
@@ -34,10 +34,10 @@ const SportPurchasedTicketList = () => {
                     classNames(
                         "flex-1 bg-green-primary-50 flex flex-wrap gap-3 p-5",
                         !sportTickets.length?"justify-center items-center":"",
-                    )}
+                )}
             >
                 {
-                    sportTickets.length ?
+                    sportTickets.length?
                     sportTickets.map((sportTicket, index)=> {
                         return (
                             <TicketSportCard
@@ -61,4 +61,4 @@ const SportPurchasedTicketList = () => {
     );
 }
 
-export default SportPurchasedTicketList;
+export default SportSoldTicketList;

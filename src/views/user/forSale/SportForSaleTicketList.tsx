@@ -6,13 +6,13 @@ import moment from "moment";
 import TicketSportCard from "../../../components/ui/TicketSportCard";
 import classNames from "classnames";
 
-const SportPurchasedTicketList = () => {
+const SportForSaleTicketList = () => {
 
     const [sportTickets, setSportTickets] = useState<SportTicketResponse[]>([]);
 
-    const getSportTickets = useCallback(() => {
+    const getForSaleSportTickets = useCallback(() => {
         const ticketService = new TicketService()
-        ticketService.getPurchasedSportTicketsByUser()
+        ticketService.getForSaleSportTicketsByUser()
             ?.then((res) => {
                 console.log(res.data)
                 setSportTickets(res.data);
@@ -24,8 +24,8 @@ const SportPurchasedTicketList = () => {
     }, [])
 
     useEffect(() => {
-        getSportTickets()
-    }, [getSportTickets]);
+        getForSaleSportTickets()
+    }, [getForSaleSportTickets]);
 
     return (
         <>
@@ -50,15 +50,17 @@ const SportPurchasedTicketList = () => {
                                 date={moment(sportTicket.startDate, "YYYY-MM-DD")}
                                 city={sportTicket.address.name}
                                 seller={sportTicket.seller.firstname + " " + sportTicket.seller.lastname}
+                                edit
+                                del
                             />
                         )
                     })
                     :
-                        <div className={"rounded-3xl p-5 flex justify-center items-center w-full text-green-primary-500 text-5xl font-semibold bg-green-primary-100"}>No ticket</div>
+                    <div className={"rounded-3xl p-5 flex justify-center items-center w-full text-green-primary-500 text-5xl font-semibold bg-green-primary-100"}>No ticket</div>
                 }
             </div>
         </>
     );
 }
 
-export default SportPurchasedTicketList;
+export default SportForSaleTicketList;

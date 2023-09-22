@@ -7,13 +7,14 @@ export type TabProps = {
             value:string,
             body: ReactElement | ReactElement[],
     }[],
+    defaultValue: string;
 }
 
-const Tab = ({data}: TabProps) => {
+const Tab = ({data, defaultValue}: TabProps) => {
     return (
         <>
             <div className="flex-1 bg-green-primary-50 flex justify-center items-center">
-                <Tabs value="html" className={"flex-1"}>
+                <Tabs value={defaultValue} className={"flex-1"}>
                     <TabsHeader
                         className={"flex-1 bg-green-primary-200 "}
                         indicatorProps={{
@@ -26,7 +27,14 @@ const Tab = ({data}: TabProps) => {
                             </TabMtr>
                         ))}
                     </TabsHeader>
-                    <TabsBody className={"flex-1"}>
+                    <TabsBody
+                        className={"flex-1"}
+                        animate={{
+                            initial: { y: 250 },
+                            mount: { y: 0 },
+                            unmount: { y: 250 },
+                        }}
+                    >
                         {data.map(({ value, body }) => (
                             <TabPanel key={value} value={value}>
                                 {body}

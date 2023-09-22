@@ -42,7 +42,7 @@ const AddSpectacleTicket: FunctionComponent = () => {
          .postSpectacleTicket(data)
          ?.then((res) => {
             toast.success(res.data.message);
-            navigate('/user/purchased');
+            navigate('/user/for-sale');
          })
          .catch((error) => {
             toast.error(error.response.data.message);
@@ -113,11 +113,19 @@ const AddSpectacleTicket: FunctionComponent = () => {
                 backgroundColor={"bg-green-primary-300"}
                 className={"font-semibold"}
             >
-               {categories?.map((category) => (
-                   <option key={category.id} value={category.id} className={"font-semibold"}>
-                      {category.name}
-                   </option>
-               ))}
+               <>
+                  <option value={""}>--</option>
+                  {categories?.map((category, index) => (
+
+                         <option
+                             key={category.id}
+                             value={category.id}
+                             className={"font-semibold"}
+                         >
+                            {category.name}
+                         </option>
+                  ))}
+               </>
             </Select>
             <Button
                 type='submit'

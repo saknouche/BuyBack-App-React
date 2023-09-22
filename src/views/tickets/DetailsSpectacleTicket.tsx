@@ -22,7 +22,7 @@ const DetailsSpectacleTicket:FunctionComponent = () => {
    const navigate = useNavigate();
    const handleDelete = () => {
       ticketService
-         .deleteSpectacleTicket(id)
+         .deleteSpectacleTicket(Number(id))
          ?.then((res) => {
             toast.success(res.data.message);
             navigate('/spectacleTickets');

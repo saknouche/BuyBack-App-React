@@ -11,7 +11,7 @@ const SpectacleTickets:FunctionComponent = () => {
    useEffect(() => {
       setLoading(true);
       ticketService
-         .getAllSpectacleTicketsByUser()
+         .getPurchasedSpectacleTicketsByUser()
          ?.then((res) => {
             setData(res.data);
          })

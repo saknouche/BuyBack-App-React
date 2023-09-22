@@ -5,14 +5,14 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import PersonIcon from "@mui/icons-material/Person";
 
 
-export type ButtonProps = {
+export type DropdownProps = {
     label: string,
     icon?: ReactElement,
     className?: string,
     children: ReactElement | ReactElement[],
 }
 
-const Dropdown = ({label, icon, children, className }: ButtonProps) => {
+const Dropdown = ({label, icon, children, className }: DropdownProps) => {
 
     const [deploy, setDeploy] = useState(false);
     const [opacity, setOpacity] = useState("opacity-0 hidden");
