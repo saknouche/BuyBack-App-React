@@ -10,7 +10,7 @@ const Nav = () => {
     const path = location.pathname.split("/")[2];
 
     const pageName = (path?.charAt(0).toUpperCase() + path.slice(1)).replace(/[-_]/, " ");
-    console.log(pageName)
+
     return (
         <>
             <div className="flex-1 bg-green-primary-50 flex flex-row">

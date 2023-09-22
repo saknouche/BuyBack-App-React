@@ -1,4 +1,29 @@
 import { ReactNode } from "react";
+import {UserPublish} from "./UserModel";
+
+export interface SportTicketResponse {
+   id: number;
+   name: string;
+   price: number;
+   startDate: string;
+   endDate: string;
+   address: { id: string; name: string; zipcode: string };
+   category: { id: string; name: string };
+   seller: UserPublish;
+   purchaser: UserPublish;
+}
+
+export interface SpectacleTicketResponse {
+   id: number;
+   name: string;
+   price: number;
+   startDate: string;
+   endDate: string;
+   address: { id: string; name: string; zipcode: string };
+   category: { id: string; name: string };
+   seller: UserPublish;
+   purchaser: UserPublish;
+}
 
 export interface TicketGet {
    id: string;

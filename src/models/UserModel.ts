@@ -6,6 +6,13 @@ export interface User {
   refreshToken?: string;
 }
 
+export interface UserPublish {
+  id: number;
+  firstname: string;
+  lastname: string;
+  email: string;
+}
+
 export interface UserRegister {
   firstname: string;
   lastname: string;

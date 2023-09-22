@@ -15,7 +15,7 @@ import Nav from "./views/user/Nav";
 import Password from "./views/user/Password";
 import {User as UserModel} from "./models/UserModel";
 import User from "./classes/User";
-import Purchased from "./views/user/Purchased";
+import Purchased from "./views/user/purchased/Purchased";
 import ForSale from "./views/user/ForSale";
 import Sold from "./views/user/Sold";
 import AddSportTicket from "./views/tickets/AddSportTicket";

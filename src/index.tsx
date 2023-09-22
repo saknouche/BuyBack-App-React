@@ -6,18 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import { StyledEngineProvider } from '@mui/material';
 import {ToastContainer} from "react-toastify";
+import { ThemeProvider } from "@material-tailwind/react";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-      <StyledEngineProvider injectFirst>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-          <ToastContainer toastStyle={{ backgroundColor: "#f0f9f3" }} />
-      </StyledEngineProvider>
+      <ThemeProvider>
+          <StyledEngineProvider injectFirst>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+              <ToastContainer toastStyle={{ backgroundColor: "#f0f9f3" }} />
+          </StyledEngineProvider>
+      </ThemeProvider>
 
   </React.StrictMode>
 );

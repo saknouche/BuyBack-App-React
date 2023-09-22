@@ -13,7 +13,15 @@ export class TicketService {
 
    getAllSportTicketsByUser = () => {
       try {
-         return api.get(process.env.REACT_APP_API_URL + '/sportsByForsaleUser');
+         return api.get(process.env.REACT_APP_API_URL + '/user/tickets/sport/purchased');
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
+   getAllSpectacleTicketsByUser = () => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/user/tickets/spectacle/purchased');
       } catch (error) {
          console.error(error);
       }
@@ -54,14 +62,6 @@ export class TicketService {
    getAllSpectacleTickets = () => {
       try {
          return api.get(process.env.REACT_APP_API_URL + '/spectacles');
-      } catch (error) {
-         console.error(error);
-      }
-   };
-
-   getAllSpectacleTicketsByUser = () => {
-      try {
-         return api.get(process.env.REACT_APP_API_URL + '/spectaclesByForsaleUser');
       } catch (error) {
          console.error(error);
       }
