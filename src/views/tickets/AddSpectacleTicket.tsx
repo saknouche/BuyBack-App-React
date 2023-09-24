@@ -13,6 +13,7 @@ import Textfield from '../../components/ui/Textfield';
 import Button from '../../components/ui/Button';
 import {AttachMoney, CalendarMonth, LocationOn, LocationSearching, SaveAlt} from "@mui/icons-material";
 import Select from "../../components/ui/Select";
+import Utils from "../../classes/Utils";
 
 const AddSpectacleTicket: FunctionComponent = () => {
    const navigate = useNavigate();
@@ -20,8 +21,8 @@ const AddSpectacleTicket: FunctionComponent = () => {
       defaultValues: {
          name: '',
          price: undefined,
-         startDate: '',
-         endDate: '',
+         startDate: Utils.getDate(),
+         endDate: Utils.getDate(),
          addressName: '',
          addressZipcode: '',
          spectaclecategoryId: undefined,

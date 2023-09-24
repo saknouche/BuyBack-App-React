@@ -1,6 +1,4 @@
 import {User as UserModel} from "../models/UserModel";
-import {useContext} from "react";
-import {UserContext} from "../App";
 
 class User {
 

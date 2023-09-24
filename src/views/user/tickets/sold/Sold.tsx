@@ -1,5 +1,5 @@
 import React from 'react';
-import Tab from "../../../components/ui/Tab";
+import Tab from "../../../../components/ui/Tab";
 import SportSoldTicketList from "./SportSoldTicketList";
 import SpectacleSoldTicketList from "./SpectacleSoldTicketList";
 

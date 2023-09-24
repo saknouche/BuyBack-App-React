@@ -87,7 +87,7 @@ const Register = () => {
             label="Sign up"
             // to="/"
             prefixIcon={<LoginIcon/>}
-            className="bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 font-bold mb-2"
+            className="w-full bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 font-bold mb-2"
             type="submit"
         />
         <Button
@@ -95,7 +95,7 @@ const Register = () => {
             to="/login"
             // icon={<AccessibilityNewIcon  />}
             className={classNames(
-                "bg-yellow-primary-500 text-yellow-primary-50 font-bold",
+                "w-full bg-yellow-primary-500 text-yellow-primary-50 font-bold",
                 "hover:bg-yellow-primary-600"
             )}
         />

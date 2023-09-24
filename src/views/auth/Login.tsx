@@ -68,14 +68,14 @@ const Login = () => {
           type="submit"
           label="Sign in"
           prefixIcon={<LoginIcon/>}
-          className="bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 font-bold mb-2"
+          className="w-full bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 font-bold mb-2"
         />
         <Button
           label="Create account"
           to="/register"
           prefixIcon={<AccessibilityNewIcon  />}
           className={classNames(
-              "bg-yellow-primary-500 text-yellow-primary-50 font-bold",
+              "w-full bg-yellow-primary-500 text-yellow-primary-50 font-bold",
               "hover:bg-yellow-primary-600"
           )}
         />

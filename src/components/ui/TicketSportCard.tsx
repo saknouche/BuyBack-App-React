@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {CalendarMonth, Delete, Edit, QuestionMark, SportsSoccer} from "@mui/icons-material";
 import Place from '@mui/icons-material/Place';
 import Button from "./Button";
 import IconButton from "./IconButton";
-import {Moment} from "moment";
+import moment, {Moment} from "moment";
 import classNames from "classnames";
 import DeleteConfirmationModal from "../modals/DeleteConfirmationModal";
 import {Dialog, DialogBody, DialogFooter, DialogHeader} from "@material-tailwind/react";
@@ -11,6 +11,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CancelIcon from "@mui/icons-material/Cancel";
 import {toast} from "react-toastify";
 import {TicketService} from "../../services/Ticket";
+import {SportTicketResponse, TicketGet} from "../../models/TicketModel";
+import DetailsSportTicket from "../../views/tickets/DetailsSportTicket";
 
 export type TicketSportProps = {
     id: string,
@@ -29,11 +31,22 @@ export type TicketSportProps = {
 const TicketSportCard = ({id, label, price, date, type, category, seller, className, city, edit, del }: TicketSportProps) => {
     const ticketService = new TicketService();
 
-    const [open, setOpen] = React.useState(false);
+    const [openDetails, setOpenDetails] = React.useState(false);
+    const [openDelete, setOpenDeleteDelete] = React.useState(false);
 
-    const handleOpen = () => setOpen(!open);
+    const [ticketData, setTicketData] = useState<SportTicketResponse>();
+
+
+    const handleOpenDetails = () => {
+        setOpenDetails(!openDetails)
+        ticketService
+            .getOneSportTicket(id)
+            ?.then((res) => setTicketData(res.data))
+            .catch((e) => console.log(e));
+    };
+    const handleOpenDelete = () => setOpenDeleteDelete(!openDelete);
     const handleDelete = (id: number) => {
-        setOpen(false);
+        setOpenDeleteDelete(false);
         ticketService
             .deleteSportTicket(id)
             ?.then((res) => {
@@ -44,7 +57,7 @@ const TicketSportCard = ({id, label, price, date, type, category, seller, classN
 
     return (
         <>
-            <div className="bg-green-primary-50 flex flex-col rounded-lg shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
+            <div className="w-[300px] bg-green-primary-50 flex flex-col rounded-lg shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
                 <div className={"relative flex-1 flex-col bg-green-primary-200 rounded-t-lg flex justify-center items-center p-10"}>
                     {
                         category?
@@ -100,13 +113,45 @@ const TicketSportCard = ({id, label, price, date, type, category, seller, classN
                             <></>
                     }
                     <div className={"flex flex-row gap-2"}>
-                        <Button to={"/ticket/"+ type +"/"+id} label={"Details"} className={"rounded-lg flex-1 bg-blue-200 font-bold text-blue-700 hover:bg-blue-300"}/>
+                        <Button
+                            // to={"/ticket/"+ type +"/"+id}
+                            label={"Details"}
+                            className={"rounded-lg flex-1 bg-blue-200 font-bold text-blue-700 hover:bg-blue-300"}
+                            onClick={handleOpenDetails}
+                        />
+                        <Dialog open={openDetails} handler={handleOpenDetails} className={"rounded-xl"}>
+                            <DetailsSportTicket ticketData={ticketData} />
+                        </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         {edit?
                         <Button
                             prefixIcon={<Edit />}
                             className='bg-amber-200 hover:bg-amber-300 text-xl font-semibold text-amber-900'
                             type={"icon"}
+
                         />:<></>}
+
+
+
+
+
+
+
+
 
                         {del?
                         <>
@@ -114,9 +159,9 @@ const TicketSportCard = ({id, label, price, date, type, category, seller, classN
                                 prefixIcon={<Delete />}
                                 className='bg-red-400 text-xl font-semibold hover:bg-red-300 text-red-800'
                                 type={"icon"}
-                                onClick={handleOpen}
+                                onClick={handleOpenDelete}
                             />
-                            <Dialog open={open} handler={handleOpen} className={""}>
+                            <Dialog open={openDelete} handler={handleOpenDelete} className={""}>
                                 <DialogHeader className={"bg-green-primary-50"}>Are you sure you want to delete this ticket ?</DialogHeader>
                                 <DialogBody divider className={"bg-green-primary-50"}>
                                     This ticket will be deleted immediately. You can't undo this action.
@@ -132,7 +177,7 @@ const TicketSportCard = ({id, label, price, date, type, category, seller, classN
                                         className='bg-blue-400 text-xl font-semibold hover:bg-blue-300 text-blue-800'
                                         prefixIcon={<CancelIcon />}
                                         label='Cancel'
-                                        onClick={() => setOpen(false)}
+                                        onClick={() => setOpenDeleteDelete(false)}
                                     />
                                 </DialogFooter>
                             </Dialog>

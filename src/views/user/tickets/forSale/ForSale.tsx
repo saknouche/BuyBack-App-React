@@ -1,21 +1,21 @@
 import React from 'react';
-import SportPurchasedTicketList from "./SportPurchasedTicketList";
-import SpectaclePurchasedTicketList from "./SpectaclePurchasedTicketList";
-import Tab from "../../../components/ui/Tab";
+import Tab from "../../../../components/ui/Tab";
+import SportForSaleTicketList from "./SportForSaleTicketList";
+import SpectacleForSaleTicketList from "./SpectacleForSaleTicketList";
 
 const tabData = [
     {
         label: "Sports",
         value: "sports",
-        body: <SportPurchasedTicketList/>,
+        body: <SportForSaleTicketList/>,
     },
     {
         label: "Spectacles",
         value: "spectacles",
-        body: <SpectaclePurchasedTicketList />,
+        body: <SpectacleForSaleTicketList />,
     }
 ];
-const Purchased = () => {
+const ForSale = () => {
     return (
         <>
             <div className="flex-1 bg-green-primary-50 flex flex-wrap gap-3 p-5">
@@ -25,6 +25,4 @@ const Purchased = () => {
     );
 }
 
-export default Purchased;
-
-
+export default ForSale;

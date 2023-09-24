@@ -17,6 +17,7 @@ import {
    SaveAlt
 } from "@mui/icons-material";
 import Select from "../../components/ui/Select";
+import Utils from "../../classes/Utils";
 
 const AddSportTicket:FunctionComponent = () => {
    const navigate = useNavigate();
@@ -24,8 +25,8 @@ const AddSportTicket:FunctionComponent = () => {
       defaultValues: {
          name: '',
          price: undefined,
-         startDate: '',
-         endDate: '',
+         startDate: Utils.getDate(),
+         endDate: Utils.getDate(),
          addressName: '',
          addressZipcode: '',
          sportcategoryId: undefined,

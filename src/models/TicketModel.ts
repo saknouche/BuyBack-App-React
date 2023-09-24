@@ -9,6 +9,7 @@ export interface SportTicketResponse {
    endDate: string;
    address: { id: string; name: string; zipcode: string };
    category: { id: string; name: string };
+   description?: string;
    seller: UserPublish;
    purchaser: UserPublish;
 }

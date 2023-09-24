@@ -8,9 +8,10 @@ import IconButton from "../components/ui/IconButton";
 import InstagramIcon from "../assets/icons/instagram.svg";
 import FacebookIcon from "../assets/icons/facebook.svg";
 import Dropdown from "../components/ui/Dropdown";
-import {ConfirmationNumber, ManageAccounts} from "@mui/icons-material";
+import {Add, AirplaneTicket, BookOnline, ConfirmationNumber, ManageAccounts} from "@mui/icons-material";
 import User from "../classes/User";
 import {UserContext} from "../App";
+import classNames from "classnames";
 
 const Header = () => {
     const {user, setUser} = useContext(UserContext);
@@ -39,13 +40,26 @@ const Header = () => {
             </Link>
             <HeaderButton label="Home" to="/"/>
             <HeaderButton label="Search Ticket" to="/tickets"/>
-            <HeaderButton label="Sell Ticket" to="/user/sell-ticket"/>
+
         </div>
         <div className="flex-1 flex flex-row items-center justify-end pr-5">
 
         </div>
         <div className="flex-1 flex flex-row gap-4 sm:gap-8 items-center justify-end pr-5">
-        {/*<HeaderSearchBar/>*/}
+
+            {
+                (User.getUser().accessToken)?
+                    <Button
+                        label="Sell a ticket"
+                        className={classNames("hidden xl:flex ml-10 bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 font-bold")}
+                        prefixIcon={<BookOnline/>}
+                        to={"user/sell-ticket"}
+                    />
+                    :
+                    <></>
+            }
+
+
             <Dropdown label={(user?.firstname?user?.firstname:"") + " " + (user?.lastname?user?.lastname:"")} className="hidden xl:inline-block">
                 {
                     (!User.getUser().accessToken)?

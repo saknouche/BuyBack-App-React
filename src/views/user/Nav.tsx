@@ -89,7 +89,7 @@ const Nav = () => {
                             {pageName}
                         </div>
                     </div>
-                    <div className={"overflow-auto px-5 pb-5"}>
+                    <div className={"overflow-auto px-5 pb-5 flex-1 flex flex-col"}>
                         <Outlet/>
                     </div>
                 </div>
