@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from "classnames";
-import TicketSpectacleCard from "../../components/ui/TicketSpectacleCard";
+import TicketSpectacleCard from "../TicketSpectacleCard";
 import moment from "moment/moment";
-import {SpectacleTicketResponse} from "../../models/TicketModel";
-import User from "../../classes/User";
+import {SpectacleTicketResponse} from "../../../models/TicketModel";
+import User from "../../../classes/User";
 
 export type SpectacleTicketProps = {
     spectacleTickets: SpectacleTicketResponse[];
@@ -15,7 +15,7 @@ const SpectacleTicketList = ({spectacleTickets}: SpectacleTicketProps) => {
             <div
                 className={
                     classNames(
-                        "flex-1 bg-green-primary-50 flex flex-wrap gap-3 p-5",
+                        "flex-1 bg-green-primary-50 flex flex-wrap gap-3 items-center justify-center",
                         !spectacleTickets.length?"justify-center items-center":"",
                     )}
             >
@@ -32,6 +32,7 @@ const SpectacleTicketList = ({spectacleTickets}: SpectacleTicketProps) => {
                                     category={spectacleTicket.category?.name}
                                     date={moment(spectacleTicket.startDate, "YYYY-MM-DD")}
                                     city={spectacleTicket?.address.name}
+                                    purchaser={spectacleTicket.purchaser}
                                     seller={spectacleTicket.seller?.firstname + " " + spectacleTicket.seller?.lastname}
                                     edit={!spectacleTicket?.purchaser && spectacleTicket.seller?.email === User.getUser().email}
                                     del={!spectacleTicket?.purchaser && spectacleTicket.seller?.email === User.getUser().email}

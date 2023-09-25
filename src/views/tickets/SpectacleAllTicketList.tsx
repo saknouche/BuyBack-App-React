@@ -1,23 +1,20 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {TicketService} from "../../../../services/Ticket";
+import React, {useCallback, useEffect, useState} from "react";
+import {SpectacleTicketResponse} from "../../models/TicketModel";
+import {TicketService} from "../../services/Ticket";
+import Utils from "../../classes/Utils";
 import {toast} from "react-toastify";
-import {SpectacleTicketResponse} from "../../../../models/TicketModel";
-import TicketSpectacleCard from "../../../tickets/TicketSpectacleCard";
-import moment from "moment";
-import classNames from "classnames";
-import SpectacleTicketList from "../../../tickets/list/SpectacleTicketList";
-import SportTicketList from "../../../tickets/list/SportTicketList";
-import Loading from "../../../../components/ui/Loading";
-import Utils from "../../../../classes/Utils";
+import Loading from "../../components/ui/Loading";
+import SpectacleTicketList from "./list/SpectacleTicketList";
 
-const SpectacleSoldTicketList = () => {
+
+const SpectacleAllTicketList = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [spectacleTickets, setSpectacleTickets] = useState<SpectacleTicketResponse[]>([]);
 
-    const getSoldSpectacleTickets = useCallback(() => {
+    const getAllSpectacleTickets = useCallback(() => {
         const ticketService = new TicketService()
-        ticketService.getSoldSpectacleTicketsByUser()
+        ticketService.getAllSpectacleTicketsByUser()
             ?.then((res) => {
                 console.log(res.data)
                 setSpectacleTickets(res.data);
@@ -31,8 +28,8 @@ const SpectacleSoldTicketList = () => {
     }, [])
 
     useEffect(() => {
-        getSoldSpectacleTickets()
-    }, [getSoldSpectacleTickets]);
+        getAllSpectacleTickets()
+    }, [getAllSpectacleTickets]);
 
     return (
         <>
@@ -46,4 +43,4 @@ const SpectacleSoldTicketList = () => {
     );
 }
 
-export default SpectacleSoldTicketList;
+export default SpectacleAllTicketList;

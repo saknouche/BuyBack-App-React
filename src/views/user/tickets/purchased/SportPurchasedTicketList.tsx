@@ -3,9 +3,9 @@ import {TicketService} from "../../../../services/Ticket";
 import {toast} from "react-toastify";
 import {SportTicketResponse} from "../../../../models/TicketModel";
 import moment from "moment";
-import TicketSportCard from "../../../../components/ui/TicketSportCard";
+import TicketSportCard from "../../../tickets/TicketSportCard";
 import classNames from "classnames";
-import SportTicketList from "../../../tickets/SportTicketList";
+import SportTicketList from "../../../tickets/list/SportTicketList";
 import Loading from "../../../../components/ui/Loading";
 import Utils from "../../../../classes/Utils";
 

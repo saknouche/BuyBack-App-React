@@ -1,24 +1,24 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {TicketService} from "../../../../services/Ticket";
+import React, {useCallback, useEffect, useState} from "react";
+import {SportTicketResponse} from "../../models/TicketModel";
+import {TicketService} from "../../services/Ticket";
+import Utils from "../../classes/Utils";
 import {toast} from "react-toastify";
-import {SportTicketResponse} from "../../../../models/TicketModel";
-import SportTicketList from "../../../tickets/list/SportTicketList";
-import Utils from "../../../../classes/Utils";
-import Loading from "../../../../components/ui/Loading";
+import Loading from "../../components/ui/Loading";
+import SportTicketList from "./list/SportTicketList";
 
-const SportForSaleTicketList = () => {
+
+const SportAllTicketList = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [sportTickets, setSportTickets] = useState<SportTicketResponse[]>([]);
 
-    const getForSaleSportTickets = useCallback(() => {
+    const getAllSportTickets = useCallback(() => {
         const ticketService = new TicketService()
-        ticketService.getForSaleSportTicketsByUser()
+        ticketService.getAllSportTicketsByUser()
             ?.then((res) => {
                 console.log(res.data)
                 setSportTickets(res.data);
                 Utils.sleep(300).then(() => setIsLoading(false));
-
             })
             .catch((error) => {
                 console.log(error.response.data)
@@ -28,8 +28,8 @@ const SportForSaleTicketList = () => {
     }, [])
 
     useEffect(() => {
-        getForSaleSportTickets()
-    }, [getForSaleSportTickets]);
+        getAllSportTickets()
+    }, [getAllSportTickets]);
 
     return (
         <>
@@ -43,4 +43,4 @@ const SportForSaleTicketList = () => {
     );
 }
 
-export default SportForSaleTicketList;
+export default SportAllTicketList;

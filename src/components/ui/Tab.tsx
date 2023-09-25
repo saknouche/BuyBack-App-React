@@ -16,7 +16,7 @@ const Tab = ({data, defaultValue}: TabProps) => {
             <div className="flex-1 bg-green-primary-50 flex justify-center items-center">
                 <Tabs value={defaultValue} className={"flex-1 h-full"}>
                     <TabsHeader
-                        className={"flex-1 bg-green-primary-200 "}
+                        className={"flex-1 bg-green-primary-200 z-0"}
                         indicatorProps={{
                             className: "bg-green-primary-300",
                         }}
@@ -36,7 +36,7 @@ const Tab = ({data, defaultValue}: TabProps) => {
                         }}
                     >
                         {data.map(({ value, body }) => (
-                            <TabPanel key={value} value={value} className={"flex-1 h-full"}>
+                            <TabPanel key={value} value={value} className={"flex-1 h-full p-0.5 pt-4"}>
                                 {body}
                             </TabPanel>
                         ))}

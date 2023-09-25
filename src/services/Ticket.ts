@@ -11,9 +11,25 @@ export class TicketService {
       }
    };
 
+   getAllSportTicketsByUser = () => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/sports');
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
    getAllSportTicketsLimitBy = (nb: number) => {
       try {
          return api.get(process.env.REACT_APP_API_URL + '/sports?nb=' + nb);
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
+   getAllSpectacleTicketsByUser = () => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/spectacles');
       } catch (error) {
          console.error(error);
       }

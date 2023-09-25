@@ -3,8 +3,8 @@ import {Link} from "react-router-dom";
 import Tab from "../../components/ui/Tab";
 import SportSoldTicketList from "./tickets/sold/SportSoldTicketList";
 import SpectacleSoldTicketList from "./tickets/sold/SpectacleSoldTicketList";
-import AddSportTicket from "../tickets/AddSportTicket";
-import AddSpectacleTicket from "../tickets/AddSpectacleTicket";
+import AddSportTicket from "../tickets/add/AddSportTicket";
+import AddSpectacleTicket from "../tickets/add/AddSpectacleTicket";
 
 const tabData = [
     {

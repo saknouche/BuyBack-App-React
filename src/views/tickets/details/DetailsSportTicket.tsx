@@ -1,12 +1,10 @@
-import Button from '../../components/ui/Button';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteConfirmationModal from '../../components/modals/DeleteConfirmationModal';
-import {SportTicketResponse} from "../../models/TicketModel";
-import {DialogBody, DialogFooter, DialogHeader} from "@material-tailwind/react";
-import {BookOnline, CalendarMonth, Description, Person, ShoppingCart} from "@mui/icons-material";
+import Button from '../../../components/ui/Button';
+import {SportTicketResponse} from "../../../models/TicketModel";
+import {DialogBody, DialogHeader} from "@material-tailwind/react";
+import {CalendarMonth, Description, Person, ShoppingCart} from "@mui/icons-material";
 import moment from "moment/moment";
 import React from "react";
-import User from "../../classes/User";
+import User from "../../../classes/User";
 import Place from "@mui/icons-material/Place";
 import classNames from "classnames";
 
@@ -152,7 +150,7 @@ const DetailsSportTicket = ({ticketData}: DetailsSportTicketProps) => {
                          label="Buy"
                          className={classNames("hidden xl:flex bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 font-bold")}
                          prefixIcon={<ShoppingCart/>}
-                         // to={"user/sell-ticket"}
+                         to={"/tickets/sport/buy/" + ticketData?.id}
                      />
                      :
                      <></>

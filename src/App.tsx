@@ -18,9 +18,12 @@ import User from "./classes/User";
 import Purchased from "./views/user/tickets/purchased/Purchased";
 import ForSale from "./views/user/tickets/forSale/ForSale";
 import Sold from "./views/user/tickets/sold/Sold";
-import AddSportTicket from "./views/tickets/AddSportTicket";
-import AddSpectacleTicket from "./views/tickets/AddSpectacleTicket";
+import AddSportTicket from "./views/tickets/add/AddSportTicket";
+import AddSpectacleTicket from "./views/tickets/add/AddSpectacleTicket";
 import SellTicket from "./views/user/SellTicket";
+import SearchTickets from "./views/tickets/SearchTickets";
+import BuySportTicket from "./views/tickets/buy/BuySportTicket";
+import BuySpectacleTicket from "./views/tickets/buy/BuySpectacleTicket";
 
 const exclusionArray = [
   '/login',
@@ -49,7 +52,7 @@ function App() {
         <UserContext.Provider value={{user, setUser}}>
             <div className="h-screen flex flex-col">
               {exclusionArray.indexOf(location.pathname) < 0 && <Header/>}
-              <div className="flex flex-1 overflow-y-auto">
+              <div className="flex flex-1 overflow-y-auto bg-green-primary-50">
                 <Routes>
                   <Route path="" >
                     <Route index element={<Home />} />
@@ -98,6 +101,14 @@ function App() {
                         </Route>
                         <Route path="*" element={<NotFound />} />
                     </Route>
+                      <Route
+                          path="tickets"
+                      >
+                          <Route index element={<SearchTickets/>}/>
+                          <Route path="sport/buy/:id" element={<BuySportTicket/>}/>
+                          <Route path="spectacle/buy/:id" element={<BuySpectacleTicket/>}/>
+                          <Route path="*" element={<NotFound />} />
+                      </Route>
                     <Route path="*" element={<NotFound />} />
                   </Route>
                 </Routes>

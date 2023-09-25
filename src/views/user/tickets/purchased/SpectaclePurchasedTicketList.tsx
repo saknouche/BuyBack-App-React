@@ -2,10 +2,10 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {TicketService} from "../../../../services/Ticket";
 import {toast} from "react-toastify";
 import {SpectacleTicketResponse} from "../../../../models/TicketModel";
-import TicketSpectacleCard from "../../../../components/ui/TicketSpectacleCard";
+import TicketSpectacleCard from "../../../tickets/TicketSpectacleCard";
 import moment from "moment";
 import classNames from "classnames";
-import SpectacleTicketList from "../../../tickets/SpectacleTicketList";
+import SpectacleTicketList from "../../../tickets/list/SpectacleTicketList";
 import Loading from "../../../../components/ui/Loading";
 import Utils from "../../../../classes/Utils";
 

@@ -1,13 +1,13 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import classNames from "classnames";
 import SearchAutocomplete from "../components/views/home/SearchAutocomplete";
-import SportTicketList from "./tickets/SportTicketList";
+import SportTicketList from "./tickets/list/SportTicketList";
 import {SpectacleTicketResponse, SportTicketResponse} from "../models/TicketModel";
 import {TicketService} from "../services/Ticket";
 import Utils from "../classes/Utils";
 import {toast} from "react-toastify";
 import Loading from "../components/ui/Loading";
-import SpectacleTicketList from "./tickets/SpectacleTicketList";
+import SpectacleTicketList from "./tickets/list/SpectacleTicketList";
 
 const Home = () => {
 
@@ -76,11 +76,11 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="px-20 bg-green-primary-50 flex flex-col items-center">
-                    <div className={"text-3xl font-semibold flex"}>
+                <div className="bg-green-primary-50 flex flex-col items-center">
+                    <div className={"text-3xl font-semibold flex mb-5"}>
                         Sport tickets
                     </div>
-                    <div>
+                    <div className={"flex flex-row flex-wrap items-center justify-center"}>
                         {
                             !isLoadingSport?
                                 <SportTicketList sportTickets={sportTickets}/>
@@ -89,11 +89,11 @@ const Home = () => {
                         }
                     </div>
                 </div>
-                <div className="px-20 bg-green-primary-50 flex flex-col items-center">
-                    <div className={"text-3xl font-semibold flex"}>
+                <div className="bg-green-primary-50 flex flex-col items-center pb-5">
+                    <div className={"text-3xl font-semibold flex mb-5"}>
                         Spectacle tickets
                     </div>
-                    <div>
+                    <div className={"flex flex-row flex-wrap items-center justify-center"}>
                         {
                             !isLoadingSpectacle?
                                 <SpectacleTicketList spectacleTickets={spectacleTickets}/>

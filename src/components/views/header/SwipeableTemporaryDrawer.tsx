@@ -5,7 +5,8 @@ import { SwipeableDrawer } from '@mui/material';
 import Button from "../../ui/Button";
 import PersonIcon from "@mui/icons-material/Person";
 import User from "../../../classes/User";
-import {ConfirmationNumber, ManageAccounts} from "@mui/icons-material";
+import {BookOnline, ConfirmationNumber, ManageAccounts} from "@mui/icons-material";
+import classNames from "classnames";
 
 const SwipeableTemporaryDrawer = () => {
 
@@ -32,9 +33,23 @@ const SwipeableTemporaryDrawer = () => {
       // onClick={toggleDrawer( false)}
       // onKeyDown={toggleDrawer(false)}
     >
-      <div className="flex flex-1 flex-col gap-6">
-        <HeaderButton onClick={toggleDrawer( false)} label="Home" to="/"/>
-        <HeaderButton onClick={toggleDrawer( false)} label="Search Ticket" to="/tickets"/>
+      <div className="flex flex-1 flex-col gap-6 p-5">
+        <Button
+            label="Home"
+            className={classNames("w-full bg-green-primary-500 hover:bg-green-primary-600 text-green-primary-50 font-bold")}
+            // prefixIcon={<BookOnline/>}
+            onClick={toggleDrawer( false)}
+            to="/"
+        />
+        <Button
+            label="Search Ticket"
+            className={classNames("w-full bg-green-primary-500 hover:bg-green-primary-600 text-green-primary-50 font-bold")}
+            // prefixIcon={<BookOnline/>}
+            onClick={toggleDrawer( false)}
+            to="/tickets"
+        />
+        {/*<HeaderButton onClick={toggleDrawer( false)} label="Home" to="/"/>*/}
+        {/*<HeaderButton onClick={toggleDrawer( false)} label="Search Ticket" to="/tickets"/>*/}
       </div>
       <div className="p-2">
         {(!User.getUser().accessToken)?
@@ -53,6 +68,13 @@ const SwipeableTemporaryDrawer = () => {
             :
             <div>
               <div className="w-full p-3 flex flex-col justify-center items-center gap-3" role="none">
+
+                <Button
+                    label="Sell a ticket"
+                    className={classNames("w-full bg-green-primary-500 hover:bg-green-primary-600 text-green-primary-50 font-bold")}
+                    prefixIcon={<BookOnline/>}
+                    to={"user/sell-ticket"}
+                />
                 <Button
                     label="My profile"
                     to="/user/profile"

@@ -63,7 +63,7 @@ const Header = () => {
             <Dropdown label={(user?.firstname?user?.firstname:"") + " " + (user?.lastname?user?.lastname:"")} className="hidden xl:inline-block">
                 {
                     (!User.getUser().accessToken)?
-                        <div className="w-full p-3 flex flex-col justify-center items-center gap-1" role="none">
+                        <div className="w-full p-3 flex flex-col justify-center items-center gap-1 z-auto" role="none">
                             <Button
                                 label="Sign in"
                                 to="/login"

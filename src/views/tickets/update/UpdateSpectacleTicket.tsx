@@ -2,20 +2,23 @@ import { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { SportTicketPost, TicketCategoriesGet } from '../../models/TicketModel';
-import { TicketService } from '../../services/Ticket';
-import Textfield from '../../components/ui/Textfield';
-import Button from '../../components/ui/Button';
+import {
+   SpectacleTicketPost,
+   TicketCategoriesGet,
+} from '../../../models/TicketModel';
+import { TicketService } from '../../../services/Ticket';
+import Textfield from '../../../components/ui/Textfield';
+import Button from '../../../components/ui/Button';
 
-const UpdateSportTicket: FunctionComponent = () => {
-   const { id } = useParams();
+const UpdateSpectacleTicket: FunctionComponent = () => {
+   const { id }  = useParams();
    const navigate = useNavigate();
    const ticketService = new TicketService();
-   const form = useForm<SportTicketPost>();
+   const form = useForm<SpectacleTicketPost>();
 
    useEffect(() => {
       ticketService
-         .getOneSportTicket(id)
+         .getOneSpectacleTicket(id)
          ?.then((res) => {
             form.setValue('name', res.data?.name);
             form.setValue('price', res.data?.price);
@@ -23,25 +26,25 @@ const UpdateSportTicket: FunctionComponent = () => {
             form.setValue('endDate', res.data?.endDate);
             form.setValue('addressName', res.data?.address.name);
             form.setValue('addressZipcode', res.data?.address.zipcode);
-            form.setValue('sportcategoryId', res.data?.category.id);
+            form.setValue('spectaclecategoryId', res.data?.category.id);
          })
-         .catch((e) => console.log(e));
+         .catch((e) => toast.error(e.response.data.message));
    }, []);
 
    const [categories, setCategories] = useState<TicketCategoriesGet[]>([]);
    useEffect(() => {
       ticketService
-         .getAllSportCategories()
+         .getAllSpectacleCategories()
          ?.then((res) => setCategories(res.data));
    }, []);
 
-   const submit = (data: SportTicketPost) => {
+   const submit = (data: SpectacleTicketPost) => {
       ticketService
-         .updateSportTicket(id, data)
+         .updateSpectacleTicket(id, data)
          ?.then((res) => {
             console.log(res.data);
             toast.success(res.data.message);
-            navigate('/sportTickets');
+            navigate('/spectacleTickets');
          })
          .catch((error) => {
             console.log(error.response.data);
@@ -55,7 +58,7 @@ const UpdateSportTicket: FunctionComponent = () => {
             className='w-[500px] sm:min-w-[300px]'
          >
             <h2 className='font-bold mt-3 mb-2 text-center'>
-               EDIT A SPORT EVENT
+               EDIT A SHOW EVENT
             </h2>
             <Textfield
                label='Name'
@@ -95,7 +98,7 @@ const UpdateSportTicket: FunctionComponent = () => {
             <select
                className='p-2 bg-green-primary-50 w-full rounded-lg mb-6'
                id='sportcategoryId'
-               {...form.register('sportcategoryId', {
+               {...form.register('spectaclecategoryId', {
                   required: true,
                   maxLength: 300,
                })}
@@ -116,4 +119,4 @@ const UpdateSportTicket: FunctionComponent = () => {
    );
 };
 
-export default UpdateSportTicket;
+export default UpdateSpectacleTicket;

@@ -2,22 +2,26 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { SportTicketPost, TicketCategoriesGet } from '../../../models/TicketModel';
+import { TicketService } from '../../../services/Ticket';
+import User from '../../../classes/User';
+import Textfield from '../../../components/ui/Textfield';
+import Button from '../../../components/ui/Button';
 import {
-   SpectacleTicketPost,
-   TicketCategoriesGet,
-} from '../../models/TicketModel';
-import { TicketService } from '../../services/Ticket';
+   AttachMoney,
+   Business,
+   CalendarMonth,
+   Category,
+   LocationOn,
+   LocationSearching,
+   SaveAlt
+} from "@mui/icons-material";
+import Select from "../../../components/ui/Select";
+import Utils from "../../../classes/Utils";
 
-import User from '../../classes/User';
-import Textfield from '../../components/ui/Textfield';
-import Button from '../../components/ui/Button';
-import {AttachMoney, CalendarMonth, LocationOn, LocationSearching, SaveAlt} from "@mui/icons-material";
-import Select from "../../components/ui/Select";
-import Utils from "../../classes/Utils";
-
-const AddSpectacleTicket: FunctionComponent = () => {
+const AddSportTicket:FunctionComponent = () => {
    const navigate = useNavigate();
-   const form = useForm<SpectacleTicketPost>({
+   const form = useForm<SportTicketPost>({
       defaultValues: {
          name: '',
          price: undefined,
@@ -25,7 +29,7 @@ const AddSpectacleTicket: FunctionComponent = () => {
          endDate: Utils.getDate(),
          addressName: '',
          addressZipcode: '',
-         spectaclecategoryId: undefined,
+         sportcategoryId: undefined,
          userEmail: User.getUser().email,
       },
    });
@@ -34,13 +38,13 @@ const AddSpectacleTicket: FunctionComponent = () => {
    const [categories, setCategories] = useState<TicketCategoriesGet[]>([]);
    useEffect(() => {
       ticketService
-         .getAllSpectacleCategories()
+         .getAllSportCategories()
          ?.then((res) => setCategories(res.data));
    }, []);
 
-   const submit = (data: SpectacleTicketPost) => {
+   const submit = (data: SportTicketPost) => {
       ticketService
-         .postSpectacleTicket(data)
+         .postSportTicket(data)
          ?.then((res) => {
             toast.success(res.data.message);
             navigate('/user/for-sale');
@@ -52,7 +56,7 @@ const AddSpectacleTicket: FunctionComponent = () => {
    return (
       <div className='flex-1 w-full bg-green-primary-50 flex flex-col p-5 gap-3 justify-center'>
          <h2 className='font-bold mt-3 mb-2 text-center text-4xl text-black-primary pb-5'>
-            My Spectacle Ticket
+            My Sport Ticket
          </h2>
          <form
             onSubmit={form.handleSubmit(submit)}
@@ -73,6 +77,7 @@ const AddSpectacleTicket: FunctionComponent = () => {
                backgroundColor={"bg-green-primary-300"}
                className={"font-semibold"}
             />
+
             <Textfield
                form={form}
                id='addressName'
@@ -84,59 +89,58 @@ const AddSpectacleTicket: FunctionComponent = () => {
             <Textfield
                form={form}
                id='addressZipcode'
-               placeholder='Zipcode'
                prefixIcon={<LocationOn/>}
+               placeholder='Zipcode'
                backgroundColor={"bg-green-primary-300"}
                className={"font-semibold"}
             />
             <Textfield
                 label='Start date'
                 form={form}
+                prefixIcon={<CalendarMonth/>}
                 id='startDate'
                 type='date'
-                prefixIcon={<CalendarMonth/>}
                 backgroundColor={"bg-green-primary-300"}
                 className={"font-semibold"}
             />
             <Textfield
                 label='End date'
                 form={form}
+                prefixIcon={<CalendarMonth/>}
                 id='endDate'
                 type='date'
-                prefixIcon={<CalendarMonth/>}
                 backgroundColor={"bg-green-primary-300"}
                 className={"font-semibold"}
             />
             <Select
                 form={form}
                 label={"Category"}
-                id={"spectacleCategoryId"}
+                id={"sportCategoryId"}
                 backgroundColor={"bg-green-primary-300"}
                 className={"font-semibold"}
             >
                <>
                   <option value={""}>--</option>
                   {categories?.map((category, index) => (
-
-                         <option
-                             key={category.id}
-                             value={category.id}
-                             className={"font-semibold"}
-                         >
-                            {category.name}
-                         </option>
+                     <option
+                         key={category.id}
+                         value={category.id}
+                         className={"font-semibold"}
+                     >
+                        {category.name}
+                     </option>
                   ))}
                </>
             </Select>
             <Button
-                type='submit'
-                label='Save'
-                prefixIcon={<SaveAlt/>}
-                className='bg-blue-400 hover:bg-blue-500 text-green-primary-50 font-semibold'
+               type='submit'
+               label='Save'
+               prefixIcon={<SaveAlt/>}
+               className='bg-blue-400 hover:bg-blue-500 text-green-primary-50 font-semibold'
             />
          </form>
       </div>
    );
 };
 
-export default AddSpectacleTicket;
+export default AddSportTicket;

@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from "classnames";
-import TicketSportCard from "../../components/ui/TicketSportCard";
+import TicketSportCard from "../TicketSportCard";
 import moment from "moment/moment";
-import {SportTicketResponse} from "../../models/TicketModel";
-import User from "../../classes/User";
+import {SportTicketResponse} from "../../../models/TicketModel";
+import User from "../../../classes/User";
 
 export type SportTicketProps = {
     sportTickets: SportTicketResponse[];
@@ -15,7 +15,7 @@ const SportTicketList = ({sportTickets}: SportTicketProps) => {
             <div
                 className={
                     classNames(
-                        "flex-1 bg-green-primary-50 flex flex-wrap gap-3 p-5",
+                        "flex-1 bg-green-primary-50 flex flex-wrap gap-3 items-center justify-center",
                         !sportTickets.length?"justify-center items-center":"",
                     )}
             >
@@ -32,6 +32,7 @@ const SportTicketList = ({sportTickets}: SportTicketProps) => {
                                     category={sportTicket.category?.name}
                                     date={moment(sportTicket.startDate, "YYYY-MM-DD")}
                                     city={sportTicket.address.name}
+                                    purchaser={sportTicket.purchaser}
                                     seller={sportTicket.seller?.firstname + " " + sportTicket.seller?.lastname}
                                     edit={!sportTicket?.purchaser && sportTicket.seller?.email === User.getUser().email}
                                     del={!sportTicket?.purchaser && sportTicket.seller?.email === User.getUser().email}
