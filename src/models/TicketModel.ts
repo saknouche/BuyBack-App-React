@@ -35,6 +35,7 @@ export interface TicketGet {
    endDate: ReactNode;
    category: { id: string; name: string };
    address: { id: string; name: string; zipcode: string };
+   description?: string;
    userId: string;
    email: string;
    firstName: string;
@@ -50,6 +51,7 @@ export interface SportTicketPost {
    endDate: ReactNode;
    addressName: string;
    addressZipcode: string;
+   description?: string;
    sportcategoryId: string;
    userEmail: string;
 }
@@ -60,6 +62,7 @@ export interface SpectacleTicketPost {
    startDate: ReactNode;
    endDate: ReactNode;
    addressName: string;
+   description?: string;
    addressZipcode: string;
    spectaclecategoryId: string;
    userEmail: string;

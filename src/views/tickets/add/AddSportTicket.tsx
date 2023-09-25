@@ -18,6 +18,7 @@ import {
 } from "@mui/icons-material";
 import Select from "../../../components/ui/Select";
 import Utils from "../../../classes/Utils";
+import Textarea from "../../../components/ui/Textarea";
 
 const AddSportTicket:FunctionComponent = () => {
    const navigate = useNavigate();
@@ -29,6 +30,7 @@ const AddSportTicket:FunctionComponent = () => {
          endDate: Utils.getDate(),
          addressName: '',
          addressZipcode: '',
+         description:'',
          sportcategoryId: undefined,
          userEmail: User.getUser().email,
       },
@@ -132,6 +134,13 @@ const AddSportTicket:FunctionComponent = () => {
                   ))}
                </>
             </Select>
+            <Textarea
+                form={form}
+                id={"description"}
+                label={"Description"}
+                className={"w-full bg-green-primary-300"}
+                maxLength={100}
+            />
             <Button
                type='submit'
                label='Save'

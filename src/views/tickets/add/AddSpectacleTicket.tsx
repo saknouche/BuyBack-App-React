@@ -14,6 +14,7 @@ import Button from '../../../components/ui/Button';
 import {AttachMoney, CalendarMonth, LocationOn, LocationSearching, SaveAlt} from "@mui/icons-material";
 import Select from "../../../components/ui/Select";
 import Utils from "../../../classes/Utils";
+import Textarea from "../../../components/ui/Textarea";
 
 const AddSpectacleTicket: FunctionComponent = () => {
    const navigate = useNavigate();
@@ -25,6 +26,7 @@ const AddSpectacleTicket: FunctionComponent = () => {
          endDate: Utils.getDate(),
          addressName: '',
          addressZipcode: '',
+         description: '',
          spectaclecategoryId: undefined,
          userEmail: User.getUser().email,
       },
@@ -128,6 +130,13 @@ const AddSpectacleTicket: FunctionComponent = () => {
                   ))}
                </>
             </Select>
+            <Textarea
+                form={form}
+                id={"description"}
+                label={"Description"}
+                className={"w-full bg-green-primary-300"}
+                maxLength={100}
+            />
             <Button
                 type='submit'
                 label='Save'
