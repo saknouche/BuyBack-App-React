@@ -22,8 +22,8 @@ import AddSportTicket from "./views/tickets/add/AddSportTicket";
 import AddSpectacleTicket from "./views/tickets/add/AddSpectacleTicket";
 import SellTicket from "./views/user/SellTicket";
 import SearchTickets from "./views/tickets/SearchTickets";
-import BuySportTicket from "./views/tickets/buy/BuySportTicket";
-import BuySpectacleTicket from "./views/tickets/buy/BuySpectacleTicket";
+import BuySportTicket from './views/tickets/buy/sport/BuySportTicket';
+import BuySpectacleTicket from "./views/tickets/buy/spectacle/BuySpectacleTicket";
 
 const exclusionArray = [
   '/login',
