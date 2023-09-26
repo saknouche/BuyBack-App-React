@@ -19,6 +19,14 @@ export class TicketService {
       }
    };
 
+   getAllSportTicketsByUserLike = (like: string) => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/sports?like=' + like);
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
    getAllSportTicketsLimitBy = (nb: number) => {
       try {
          return api.get(process.env.REACT_APP_API_URL + '/sports?nb=' + nb);
@@ -30,6 +38,14 @@ export class TicketService {
    getAllSpectacleTicketsByUser = () => {
       try {
          return api.get(process.env.REACT_APP_API_URL + '/spectacles');
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
+   getAllSpectacleTicketsByUserLike = (like: string) => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/spectacles?like=' + like);
       } catch (error) {
          console.error(error);
       }
