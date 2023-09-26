@@ -2,9 +2,9 @@ import { ReactNode } from "react";
 import {UserPublish} from "./UserModel";
 
 export interface SportTicketResponse {
-   id: number;
+   id: string;
    name: string;
-   price: number;
+   price: string;
    startDate: string;
    endDate: string;
    address: { id: string; name: string; zipcode: string };
@@ -15,9 +15,9 @@ export interface SportTicketResponse {
 }
 
 export interface SpectacleTicketResponse {
-   id: number;
+   id: string;
    name: string;
-   price: number;
+   price: string;
    startDate: string;
    endDate: string;
    address: { id: string; name: string; zipcode: string };
