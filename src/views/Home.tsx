@@ -8,6 +8,8 @@ import Utils from "../classes/Utils";
 import {toast} from "react-toastify";
 import Loading from "../components/ui/Loading";
 import SpectacleTicketList from "./tickets/list/SpectacleTicketList";
+import Button from "../components/ui/Button";
+import {Search} from "@mui/icons-material";
 
 const Home = () => {
 
@@ -72,13 +74,19 @@ const Home = () => {
                             "px-4 sm:px-16 md:px-28 lg:px-60 xl:px-80 2xl:px-96"
                         )}
                     >
-                        <SearchAutocomplete />
+                        <Button
+                            prefixIcon={<Search/>}
+                            label={"Find a ticket"}
+                            to={"/tickets"}
+                            className={"bg-green-primary-700 text-green-primary-50 hover:bg-green-primary-800 font-semibold h-14 px-14"}
+                        />
+                        {/*<SearchAutocomplete />*/}
                     </div>
                 </div>
 
                 <div className="bg-green-primary-50 flex flex-col items-center">
                     <div className={"text-3xl font-semibold flex mb-5"}>
-                        Sport tickets
+                        Recent sport tickets
                     </div>
                     <div className={"flex flex-row flex-wrap items-center justify-center"}>
                         {
@@ -91,7 +99,7 @@ const Home = () => {
                 </div>
                 <div className="bg-green-primary-50 flex flex-col items-center pb-5">
                     <div className={"text-3xl font-semibold flex mb-5"}>
-                        Spectacle tickets
+                        Recent spectacle tickets
                     </div>
                     <div className={"flex flex-row flex-wrap items-center justify-center"}>
                         {

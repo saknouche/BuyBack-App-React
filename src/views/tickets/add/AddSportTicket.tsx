@@ -31,7 +31,7 @@ const AddSportTicket:FunctionComponent = () => {
          addressName: '',
          addressZipcode: '',
          description:'',
-         sportcategoryId: undefined,
+         sportCategoryId: undefined,
          userEmail: User.getUser().email,
       },
    });

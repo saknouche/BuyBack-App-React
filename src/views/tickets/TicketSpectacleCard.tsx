@@ -11,7 +11,9 @@ import {toast} from "react-toastify";
 import {TicketService} from "../../services/Ticket";
 import {UserPublish} from "../../models/UserModel";
 import DetailsSpectacleTicket from "./details/DetailsSpectacleTicket";
-import {SpectacleTicketResponse} from "../../models/TicketModel";
+import {SpectacleTicketPost, SpectacleTicketResponse} from "../../models/TicketModel";
+import UpdateSpectacleTicket from "./update/UpdateSpectacleTicket";
+import {useForm} from "react-hook-form";
 
 export type TicketSpectacleProps = {
     id: string,
@@ -30,12 +32,31 @@ export type TicketSpectacleProps = {
 
 const TicketSpectacleCard = ({id, label, price, date, type, category, seller, purchaser, className, city, edit, del }: TicketSpectacleProps) => {
     const ticketService = new TicketService();
+    const form = useForm<SpectacleTicketPost>();
 
     const [openDetails, setOpenDetails] = React.useState(false);
+    const [openEdit, setOpenEdit] = React.useState(false);
     const [openDelete, setOpenDelete] = React.useState(false);
 
     const [ticketData, setTicketData] = useState<SpectacleTicketResponse>();
 
+    const handleOpenEdit = () => {
+        setOpenEdit(!openEdit)
+        ticketService
+            .getOneSpectacleTicket(id)
+            ?.then((res) => {
+                // setTicketData(res.data)
+                form.setValue('name', res.data?.name);
+                form.setValue('price', res.data?.price);
+                form.setValue('startDate', res.data?.startDate);
+                form.setValue('endDate', res.data?.endDate);
+                form.setValue('addressName', res.data?.address.name);
+                form.setValue('description', res.data?.description);
+                form.setValue('addressZipcode', res.data?.address.zipcode);
+                form.setValue('spectacleCategoryId', res.data?.category.id);
+            })
+            .catch((e) => console.log(e));
+    };
 
     const handleOpenDetails = () => {
         setOpenDetails(!openDetails)
@@ -61,9 +82,9 @@ const TicketSpectacleCard = ({id, label, price, date, type, category, seller, pu
                 <div className={"relative flex-1 flex-col bg-green-primary-200 rounded-t-lg flex justify-center items-center p-10"}>
                     {
                         category?
-                            <SportsSoccer fontSize={"large"} className={"text-green-primary-700"} />
-                            :
                             <QuestionMark fontSize={"large"} className={"text-green-primary-700"} />
+                            :
+                            <SportsSoccer fontSize={"large"} className={"text-green-primary-700"} />
                     }
                     {
                         category?
@@ -131,15 +152,23 @@ const TicketSpectacleCard = ({id, label, price, date, type, category, seller, pu
                         <Dialog open={openDetails} handler={handleOpenDetails} className={"rounded-xl"}>
                             <DetailsSpectacleTicket ticketData={ticketData} />
                         </Dialog>
-                        
-                        
-                        
+
+
+
                         {edit?
-                        <Button
-                            prefixIcon={<Edit />}
-                            className='bg-amber-200 hover:bg-amber-300 text-xl font-semibold text-amber-900'
-                            type={"icon"}
-                        />:<></>}
+                            <>
+                                <Button
+                                    prefixIcon={<Edit />}
+                                    className='bg-amber-200 hover:bg-amber-300 text-xl font-semibold text-amber-900'
+                                    type={"icon"}
+                                    onClick={handleOpenEdit}
+                                />
+                                <Dialog open={openEdit} handler={handleOpenEdit} className={"rounded-xl"}>
+                                    <UpdateSpectacleTicket form={form} id={id} />
+                                </Dialog>
+                            </>
+                            :<></>
+                        }
 
                         {del?
                         <>

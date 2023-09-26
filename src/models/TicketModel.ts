@@ -52,7 +52,7 @@ export interface SportTicketPost {
    addressName: string;
    addressZipcode: string;
    description?: string;
-   sportcategoryId: string;
+   sportCategoryId: string;
    userEmail: string;
 }
 export interface SpectacleTicketPost {
@@ -64,7 +64,7 @@ export interface SpectacleTicketPost {
    addressName: string;
    description?: string;
    addressZipcode: string;
-   spectaclecategoryId: string;
+   spectacleCategoryId: string;
    userEmail: string;
 }
 

@@ -27,7 +27,7 @@ const AddSpectacleTicket: FunctionComponent = () => {
          addressName: '',
          addressZipcode: '',
          description: '',
-         spectaclecategoryId: undefined,
+         spectacleCategoryId: undefined,
          userEmail: User.getUser().email,
       },
    });

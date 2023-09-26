@@ -19,6 +19,14 @@ export class TicketService {
       }
    };
 
+   getAllSportTicketsByUserLike = (like: string) => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/sports?like=' + like);
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
    getAllSportTicketsLimitBy = (nb: number) => {
       try {
          return api.get(process.env.REACT_APP_API_URL + '/sports?nb=' + nb);
@@ -30,6 +38,14 @@ export class TicketService {
    getAllSpectacleTicketsByUser = () => {
       try {
          return api.get(process.env.REACT_APP_API_URL + '/spectacles');
+      } catch (error) {
+         console.error(error);
+      }
+   };
+
+   getAllSpectacleTicketsByUserLike = (like: string) => {
+      try {
+         return api.get(process.env.REACT_APP_API_URL + '/spectacles?like=' + like);
       } catch (error) {
          console.error(error);
       }
@@ -107,7 +123,7 @@ export class TicketService {
          console.error(error);
       }
    };
-   updateSportTicket = (id: string | undefined, data: SportTicketPost) => {
+   updateSportTicket = (id: string | number, data: SportTicketPost) => {
       try {
          return api.put(process.env.REACT_APP_API_URL + '/sports/' + id, data);
       } catch (error) {
@@ -146,7 +162,7 @@ export class TicketService {
       }
    };
 
-   updateSpectacleTicket = (id: string | undefined, data: SpectacleTicketPost) => {
+   updateSpectacleTicket = (id: string | number, data: SpectacleTicketPost) => {
       try {
          return api.put(
             process.env.REACT_APP_API_URL + '/spectacles/' + id,

@@ -4,11 +4,8 @@ import Logo from "../assets/svg/logo_circle.svg"
 import HeaderButton from "../components/views/header/HeaderButton";
 import Button from "../components/ui/Button";
 import SwipeableTemporaryDrawer from "../components/views/header/SwipeableTemporaryDrawer";
-import IconButton from "../components/ui/IconButton";
-import InstagramIcon from "../assets/icons/instagram.svg";
-import FacebookIcon from "../assets/icons/facebook.svg";
 import Dropdown from "../components/ui/Dropdown";
-import {Add, AirplaneTicket, BookOnline, ConfirmationNumber, ManageAccounts} from "@mui/icons-material";
+import {BookOnline, ConfirmationNumber, ManageAccounts} from "@mui/icons-material";
 import User from "../classes/User";
 import {UserContext} from "../App";
 import classNames from "classnames";
@@ -60,7 +57,7 @@ const Header = () => {
             }
 
 
-            <Dropdown label={(user?.firstname?user?.firstname:"") + " " + (user?.lastname?user?.lastname:"")} className="hidden xl:inline-block">
+            <Dropdown label={(User.getUser().accessToken)?(user?.firstname) + " " + (user?.lastname):"Login"} className="hidden xl:inline-block">
                 {
                     (!User.getUser().accessToken)?
                         <div className="w-full p-3 flex flex-col justify-center items-center gap-1 z-auto" role="none">
