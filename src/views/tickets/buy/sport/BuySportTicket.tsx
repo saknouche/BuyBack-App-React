@@ -35,7 +35,12 @@ const BuySportTicket = () => {
          })
          .catch((e) => {
             toast.error(e.response.data.message);
-            navigate('/tickets');
+            if(e.response.data.message == null){
+               toast.error("You must be connected to buy tickets");
+               navigate('/login');
+            }else{
+               navigate('/tickets');
+            }
          });
    }, []);
 
