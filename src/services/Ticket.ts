@@ -107,7 +107,7 @@ export class TicketService {
          console.error(error);
       }
    };
-   updateSportTicket = (id: string | undefined, data: SportTicketPost) => {
+   updateSportTicket = (id: string | number, data: SportTicketPost) => {
       try {
          return api.put(process.env.REACT_APP_API_URL + '/sports/' + id, data);
       } catch (error) {
@@ -146,7 +146,7 @@ export class TicketService {
       }
    };
 
-   updateSpectacleTicket = (id: string | undefined, data: SpectacleTicketPost) => {
+   updateSpectacleTicket = (id: string | number, data: SpectacleTicketPost) => {
       try {
          return api.put(
             process.env.REACT_APP_API_URL + '/spectacles/' + id,

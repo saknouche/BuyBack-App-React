@@ -1,5 +1,5 @@
 import Button from '../../../components/ui/Button';
-import {SportTicketResponse} from "../../../models/TicketModel";
+import {SportTicketPost, SportTicketResponse} from "../../../models/TicketModel";
 import {DialogBody, DialogHeader} from "@material-tailwind/react";
 import {CalendarMonth, Description, Person, ShoppingCart} from "@mui/icons-material";
 import moment from "moment/moment";
@@ -7,6 +7,7 @@ import React from "react";
 import User from "../../../classes/User";
 import Place from "@mui/icons-material/Place";
 import classNames from "classnames";
+import {UseFormReturn} from "react-hook-form";
 
 export type DetailsSportTicketProps = {
    ticketData: SportTicketResponse | undefined;

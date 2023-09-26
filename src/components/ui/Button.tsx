@@ -60,7 +60,7 @@ const Button = ({label, prefixIcon, suffixIcon, to, link, className, type, onCli
           :
           <input
             className={classNames(
-              "cursor-pointer flex-1",
+              "cursor-pointer flex-1 outline-none",
               "py-2 px-3 z-10",
               (prefixIcon)?"pl-10 mr-1":"",
               (suffixIcon)?"pr-10 ml-1":"",
