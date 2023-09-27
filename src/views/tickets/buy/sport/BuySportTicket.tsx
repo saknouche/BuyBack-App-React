@@ -11,11 +11,8 @@ import {
    Description,
    Person,
    Place,
-   ShoppingCart,
 } from '@mui/icons-material';
 import User from '../../../../classes/User';
-import Button from '../../../../components/ui/Button';
-import classNames from 'classnames';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -46,7 +43,7 @@ const BuySportTicket = () => {
 
    return (
       <>
-         <div className='flex-1 bg-green-primary-50 flex justify-center items-center flex-col'>
+         <div className='flex-1 bg-green-primary-50 flex justify-center items-center flex-col  '>
             {ticketData && (
                <>
                   <PayPalScriptProvider
@@ -56,7 +53,7 @@ const BuySportTicket = () => {
                            'AeEkv2nSB6piXwKBs2azqJtCUJyw6krAcaeebxpuOqtMdL-I3BD8xHXHlI7j6yfGQBYBygYyP_vxI-e5',
                      }}
                   >
-                     <div className='my-10 w-1/2'>
+                     <div className='my-10 w-1/2 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-xl'>
                         <DialogHeader
                            className={
                               'bg-green-primary-500 text-green-primary-50 rounded-t-xl'
@@ -310,21 +307,6 @@ const BuySportTicket = () => {
                                  )}
                               </div>
                            </div>
-                           {!ticketData?.purchaser &&
-                           !(
-                              ticketData?.seller?.email === User.getUser().email
-                           ) ? (
-                              <Button
-                                 label='Buy'
-                                 className={classNames(
-                                    'hidden xl:flex bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 font-bold'
-                                 )}
-                                 prefixIcon={<ShoppingCart />}
-                                 to={'/tickets/sport/buy/' + ticketData?.id}
-                              />
-                           ) : (
-                              <></>
-                           )}
                         </DialogBody>
                      </div>
                      <Checkout ticket={ticketData} />
