@@ -2,20 +2,19 @@ import React, {useState} from 'react';
 import {CalendarMonth, Delete, Edit, QuestionMark, SportsSoccer, TaskAlt} from "@mui/icons-material";
 import Place from '@mui/icons-material/Place';
 import Button from "../../components/ui/Button";
-import IconButton from "../../components/ui/IconButton";
-import moment, {Moment} from "moment";
+import {Moment} from "moment";
 import classNames from "classnames";
-import DeleteConfirmationModal from "../../components/modals/DeleteConfirmationModal";
 import {Dialog, DialogBody, DialogFooter, DialogHeader} from "@material-tailwind/react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CancelIcon from "@mui/icons-material/Cancel";
 import {toast} from "react-toastify";
 import {TicketService} from "../../services/Ticket";
-import {SportTicketPost, SportTicketResponse, TicketCategoriesGet, TicketGet} from "../../models/TicketModel";
+import {SportTicketPost, SportTicketResponse} from "../../models/TicketModel";
 import DetailsSportTicket from "./details/DetailsSportTicket";
 import {UserPublish} from "../../models/UserModel";
 import {useForm} from "react-hook-form";
 import UpdateSportTicket from "./update/UpdateSportTicket";
+import 'moment/locale/fr';
 
 export type TicketSportProps = {
     id: string,

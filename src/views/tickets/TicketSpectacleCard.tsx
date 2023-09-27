@@ -14,6 +14,7 @@ import DetailsSpectacleTicket from "./details/DetailsSpectacleTicket";
 import {SpectacleTicketPost, SpectacleTicketResponse} from "../../models/TicketModel";
 import UpdateSpectacleTicket from "./update/UpdateSpectacleTicket";
 import {useForm} from "react-hook-form";
+import 'moment/locale/fr';
 
 export type TicketSpectacleProps = {
     id: string,
