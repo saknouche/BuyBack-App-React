@@ -57,12 +57,12 @@ const SwipeableTemporaryDrawer = () => {
               <Button
                   label="Sign in"
                   to="/login"
-                  className="bg-green-primary-500 hover:bg-green-primary-600 text-green-primary-50 border border-transparent hover:shadow-sm"
+                  className="w-full bg-green-primary-500 hover:bg-green-primary-600 text-green-primary-50 border border-transparent hover:shadow-sm"
               />
               <Button
                   label="Sign up"
                   to="/register"
-                  className="bg-yellow-primary-500 text-yellow-primary-50 hover:bg-yellow-primary-600 border border-transparent hover:shadow-sm"
+                  className="w-full bg-yellow-primary-500 text-yellow-primary-50 hover:bg-yellow-primary-600 border border-transparent hover:shadow-sm"
               />
             </div>
             :

@@ -149,7 +149,7 @@ const DetailsSportTicket = ({ticketData}: DetailsSportTicketProps) => {
                  !ticketData?.purchaser && !(ticketData?.seller?.email === User.getUser().email)?
                      <Button
                          label="Buy"
-                         className={classNames("hidden xl:flex bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 font-bold")}
+                         className={classNames("flex bg-green-primary-700 hover:bg-green-primary-600 text-green-primary-50 font-bold")}
                          prefixIcon={<ShoppingCart/>}
                          to={"/tickets/sport/buy/" + ticketData?.id}
                      />
