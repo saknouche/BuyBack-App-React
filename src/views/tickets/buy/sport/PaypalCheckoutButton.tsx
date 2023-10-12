@@ -22,7 +22,9 @@ const PaypalCheckoutButton = ({ ticket }: Props) => {
          ?.then((res) => {
             setPaidFor(true);
          })
-         .catch((e) => toast.error(e.response.data.message));
+         .catch((e) => {
+            toast.error(e.response.data.message)
+         });
    };
 
    if (paidFor) {
